@@ -13,14 +13,7 @@ namespace MonopolyGame.Model
             this.BoardArr = new ITile[40];
             this.Players = new List<Player>();
 
-            //for (int i = 0; i < this.BoardArr.Length; i++)
-            //{
-            //    if (i < this.BoardArr.Length - 2)
-            //    {
-            //        this.BoardArr[i] = new CardTile(i);
-            //    }
-            //    this.BoardArr[BoardArr.Length - 1] = new MoneyTile(i);
-            //}
+            LoadTiles();
         }
 
         public ITile[] BoardArr { get; private set; }
@@ -45,6 +38,10 @@ namespace MonopolyGame.Model
             this.Players.Add(player);
         }
 
-
+        public void LoadTiles() 
+        {
+            this.BoardArr[0] = new StartTile();
+            this.BoardArr[1] = new StreetTile(1, "Old Kent Road", StreetTileColor.Brown);
+        }
     }
 }

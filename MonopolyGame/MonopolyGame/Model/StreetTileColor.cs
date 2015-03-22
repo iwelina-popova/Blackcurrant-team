@@ -8,13 +8,12 @@ namespace MonopolyGame.Model
 {
     enum StreetTileColor
     {
-        Orange,
+        Brown,
         Yellow,
         DarkBlue,
         LiteBlue,
         Green,
         Red,
         Pink,
-        Purple
     }
 }
