@@ -12,7 +12,7 @@
     {
         static void Main(string[] args)
         {
-            Board board = new Board(16);
+            Board board = new Board();
             Player pesho = new Player("Pesho");
             Player gosho = new Player("Gosho");
             board.AddPlayer(pesho);

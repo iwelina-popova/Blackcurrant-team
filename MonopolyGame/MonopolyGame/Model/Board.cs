@@ -9,9 +9,11 @@ namespace MonopolyGame.Model
     using MonopolyGame.Interfaces;
      public class Board
     {
-        public Board(int size)
+         private const int BOARD_SIZE = 40;
+
+        public Board()
         {
-            this.BoardArr = new ITile[size];
+            this.BoardArr = new ITile[BOARD_SIZE];
             this.Players = new List<Player>();
 
             LoadTiles();
