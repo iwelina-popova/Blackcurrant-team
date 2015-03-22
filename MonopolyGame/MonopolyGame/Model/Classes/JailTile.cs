@@ -10,12 +10,13 @@ namespace MonopolyGame.Model
 
     public class JailTile : Tile,ITile
     {
-        private Random generator;
-        private int cycle = 3;
+        private int cycle;
 
         public JailTile(int position) 
             :base(position)
-        { }
+        {
+            this.cycle = 3;
+        }
 
         public void Action(Player player)
         {

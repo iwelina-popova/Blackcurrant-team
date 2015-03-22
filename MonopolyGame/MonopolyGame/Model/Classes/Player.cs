@@ -25,7 +25,10 @@ namespace MonopolyGame.Model
         
         public void Move(Dice dice, ITile[] board)
         {
-            this.Position += dice.Roll();
+            int firstDice = dice.Roll();
+            int secondDice = dice.Roll();
+            this.Position += firstDice + secondDice;
+
             if (this.Position >= board.Length)
             {
                 this.Position -= board.Length - 1;
