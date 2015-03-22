@@ -8,9 +8,9 @@ namespace MonopolyGame.Model
 {
     class Board
     {
-        public Board()
+        public Board(int size)
         {
-            this.BoardArr = new ITile[40];
+            this.BoardArr = new ITile[size];
             this.Players = new List<Player>();
 
             LoadTiles();
