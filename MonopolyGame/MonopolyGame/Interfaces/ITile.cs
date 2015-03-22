@@ -8,7 +8,7 @@
 
     using Model;
 
-    interface ITile
+    public interface ITile
     {
         void Action(Player player);
     }
