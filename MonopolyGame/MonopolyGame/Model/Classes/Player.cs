@@ -36,14 +36,19 @@ namespace MonopolyGame.Model
             board[this.Position].Action(this);
         }
 
-        public void ChangeMoney(int amount)
+        public void AddMoney(int amount)
         {
             this.Money += amount;
         }
 
+        public void WidthDrawMoney(int amount) 
+        {
+            this.Money -= amount;
+        }
+
         public void DrawCard(Card card)
         {
-            ChangeMoney(card.Money);
+            AddMoney(card.Money);
         }
 
         public override string ToString()
