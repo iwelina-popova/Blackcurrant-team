@@ -17,7 +17,7 @@ namespace MonopolyGame.Model
 
         public int Roll()
         {
-            return generator.Next(0, 13);
+            return generator.Next(1, 7);
         }
     }
 }

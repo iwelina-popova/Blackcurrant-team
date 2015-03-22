@@ -13,14 +13,14 @@ namespace MonopolyGame.Model
             this.BoardArr = new ITile[size];
             this.Players = new List<Player>();
 
-            for (int i = 0; i < this.BoardArr.Length; i++)
-            {
-                if (i < this.BoardArr.Length - 2)
-                {
-                    this.BoardArr[i] = new CardTile(i);
-                }
-                this.BoardArr[BoardArr.Length - 1] = new MoneyTile(i);
-            }
+            //for (int i = 0; i < this.BoardArr.Length; i++)
+            //{
+            //    if (i < this.BoardArr.Length - 2)
+            //    {
+            //        this.BoardArr[i] = new CardTile(i);
+            //    }
+            //    this.BoardArr[BoardArr.Length - 1] = new MoneyTile(i);
+            //}
         }
 
         public ITile[] BoardArr { get; private set; }
@@ -44,5 +44,7 @@ namespace MonopolyGame.Model
         {
             this.Players.Add(player);
         }
+
+
     }
 }
