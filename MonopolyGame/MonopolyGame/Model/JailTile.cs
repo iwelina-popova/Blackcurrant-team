@@ -8,7 +8,7 @@ namespace MonopolyGame.Model
 {
     using Interfaces;
 
-    class JailTile : Tile,ITile
+    public class JailTile : Tile,ITile
     {
         public JailTile(int position) 
             :base(position)

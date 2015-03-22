@@ -8,7 +8,7 @@ namespace MonopolyGame.Model
 {
     using Interfaces;
 
-    class StreetTile : Tile,ITile
+    public class StreetTile : Tile,ITile
     {
         public StreetTile(int position, string name, StreetTileColor color) 
             :base(position)

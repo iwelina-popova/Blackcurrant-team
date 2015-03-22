@@ -8,7 +8,7 @@ namespace MonopolyGame.Model
 {
     using Interfaces;
 
-    class StationTile : Tile,ITile
+    public class StationTile : Tile,ITile
     {
         
         public StationTile(int position, string name)

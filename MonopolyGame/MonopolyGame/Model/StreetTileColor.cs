@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    enum StreetTileColor
+    public enum StreetTileColor
     {
         Brown,
         Yellow,

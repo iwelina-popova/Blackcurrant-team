@@ -8,7 +8,7 @@ namespace MonopolyGame.Model
 {
     using Interfaces;
 
-    class ChanceTile : Tile,ITile
+    public class ChanceTile : Tile,ITile
     {
         public ChanceTile(int position)
             : base(position)

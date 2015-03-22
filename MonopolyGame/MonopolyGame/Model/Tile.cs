@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    class Tile
+    public class Tile
     {
         public Tile(int position)
         {

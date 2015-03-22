@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    using Interfaces;
+    using MonopolyGame.Interfaces;
+    
 
-    class GoToJailTile: Tile,ITile
+    public class GoToJailTile: Tile,ITile
     {
+        public GoToJailTile(int position) : base(position)
+        { }
+        public void Action(Player player)
+        {
+
+        }
     }
 }

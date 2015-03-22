@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    class CommunityTile : Tile,ITile
-    {
-        using Interfaces;
 
+    using Interfaces;
+    public class CommunityTile : Tile,ITile
+    {
         public CommunityTile(int position)
             : base(position)
         { }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    class Dice
+    public class Dice
     {
         private Random generator;
 

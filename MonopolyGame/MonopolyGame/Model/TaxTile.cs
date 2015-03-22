@@ -8,7 +8,7 @@ namespace MonopolyGame.Model
 {
     using Interfaces;
 
-    class TaxTile : Tile,ITile
+    public class TaxTile : Tile,ITile
     {
         public TaxTile(int position, String name) 
             : base(position) 

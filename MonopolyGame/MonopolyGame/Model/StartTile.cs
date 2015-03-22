@@ -8,7 +8,7 @@ namespace MonopolyGame.Model
 {
     using Interfaces; 
 
-    class StartTile : Tile,ITile
+    public class StartTile : Tile,ITile
     {
         public StartTile()
             : base(0) 

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    class Player
+    using MonopolyGame.Interfaces;
+
+    public class Player
     {
         public Player(string name)
         {

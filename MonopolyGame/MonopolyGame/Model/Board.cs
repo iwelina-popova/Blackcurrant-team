@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    class Board
+    using MonopolyGame.Interfaces;
+     public class Board
     {
         public Board(int size)
         {
