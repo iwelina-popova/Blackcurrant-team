@@ -8,10 +8,11 @@ namespace MonopolyGame.Model
 {
     using Interfaces;
 
-    class TaxTile : Tile,ITile
+    class StationTile : Tile,ITile
     {
-        public TaxTile(int position, String name) 
-            : base(position) 
+        
+        public StationTile(int position, string name)
+            : base(position)
         {
             this.Name = name;
         }

@@ -8,15 +8,13 @@ namespace MonopolyGame.Model
 {
     using Interfaces;
 
-    class TaxTile : Tile,ITile
+    class ChanceTile : Tile,ITile
     {
-        public TaxTile(int position, String name) 
-            : base(position) 
-        {
-            this.Name = name;
-        }
+        public ChanceTile(int position)
+            : base(position)
+        { }
 
-        public string Name { get; private set; }
+
 
         public void Action(Player player)
         {

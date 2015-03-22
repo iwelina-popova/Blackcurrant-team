@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
+    using Interfaces;
+
     class JailTile : Tile,ITile
     {
         public JailTile(int position) 

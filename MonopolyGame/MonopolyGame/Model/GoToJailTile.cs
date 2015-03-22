@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
+    using Interfaces;
+
     class GoToJailTile: Tile,ITile
     {
     }

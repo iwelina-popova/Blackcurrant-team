@@ -8,6 +8,8 @@ namespace MonopolyGame.Model
 {
     class CommunityTile : Tile,ITile
     {
+        using Interfaces;
+
         public CommunityTile(int position)
             : base(position)
         { }

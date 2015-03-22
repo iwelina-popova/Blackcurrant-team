@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
+    using Interfaces;
+
     class StreetTile : Tile,ITile
     {
         public StreetTile(int position, string name, StreetTileColor color) 

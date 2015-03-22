@@ -15,5 +15,6 @@ namespace MonopolyGame.Model
         Green,
         Red,
         Pink,
+        Orange
     }
 }
