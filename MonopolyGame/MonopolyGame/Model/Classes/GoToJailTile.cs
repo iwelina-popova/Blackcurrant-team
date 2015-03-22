@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    using MonopolyGame.Interfaces;
+    using Interfaces;
     
 
     public class GoToJailTile: Tile,ITile
