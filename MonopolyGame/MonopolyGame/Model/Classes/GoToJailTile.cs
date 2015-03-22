@@ -15,7 +15,7 @@ namespace MonopolyGame.Model
         { }
         public void Action(Player player)
         {
-
+            //player.Position = Prison Position on the board
         }
     }
 }

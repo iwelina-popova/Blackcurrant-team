@@ -13,12 +13,10 @@ namespace MonopolyGame.Model
         public StartTile()
             : base(0) 
         { }
-
-
-
+        
         public void Action(Player player)
         {
-            throw new NotImplementedException();
+            player.Money += 200;
         }
     }
 }

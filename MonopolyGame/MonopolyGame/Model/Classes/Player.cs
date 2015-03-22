@@ -15,12 +15,14 @@ namespace MonopolyGame.Model
             this.Name = name;
             this.Position = 0;
             this.Money = 1000;
+            this.CanMove = true;
         }
 
         public string Name { get; private set; }
         public int Position { get; private set; }
-        public int Money { get; private set; }
-
+        public int Money { get; set; }
+        public bool CanMove { get; set; }
+        
         public void Move(Dice dice, ITile[] board)
         {
             this.Position += dice.Roll();
