@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    using Interfaces; 
-
-    public class StartTile : Tile,ITile
+    public class StartTile : Tile
     {
         public StartTile()
             : base(0) 
         { }
         
-        public void Action(Player player)
+        public override void Action(Player player)
         {
             player.Money += 200;
         }

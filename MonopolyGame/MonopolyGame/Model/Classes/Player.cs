@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    using MonopolyGame.Interfaces;
-
     public class Player
     {
         public Player(string name)
@@ -23,7 +21,7 @@ namespace MonopolyGame.Model
         public int Money { get; set; }
         public bool CanMove { get; set; }
         
-        public void Move(Dice dice, ITile[] board)
+        public void Move(Dice dice, Tile[] board)
         {
             int firstDice = dice.Roll();
             int secondDice = dice.Roll();

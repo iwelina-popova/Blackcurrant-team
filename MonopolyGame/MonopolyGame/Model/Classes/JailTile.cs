@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    using Interfaces;
-
-    public class JailTile : Tile,ITile
+    public class JailTile : Tile
     {
         private int cycle;
 
@@ -18,7 +16,7 @@ namespace MonopolyGame.Model
             this.cycle = 3;
         }
 
-        public void Action(Player player)
+        public override void Action(Player player)
         {
             throw new NotImplementedException();
         }

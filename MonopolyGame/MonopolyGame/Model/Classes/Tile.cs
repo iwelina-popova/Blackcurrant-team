@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    public class Tile
+    public abstract class Tile
     {
         public Tile(int position)
         {
@@ -14,5 +14,7 @@ namespace MonopolyGame.Model
         }
 
         public int Position { get; private set; }
+
+        public abstract void Action(Player player);
     }
 }

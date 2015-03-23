@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    using Interfaces;
-
-    public class StationTile : Tile,ITile
+    public class StationTile : Tile
     {
         
         public StationTile(int position, string name)
@@ -19,7 +17,7 @@ namespace MonopolyGame.Model
 
         public string Name { get; private set; }
 
-        public void Action(Player player)
+        public override void Action(Player player)
         {
             throw new NotImplementedException();
         }

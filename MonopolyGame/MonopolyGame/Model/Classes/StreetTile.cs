@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    using Interfaces;
-
-    public class StreetTile : Tile,ITile
+    public class StreetTile : Tile
     {
         public StreetTile(int position, string name, StreetTileColor color) 
             :base(position)
@@ -22,7 +20,7 @@ namespace MonopolyGame.Model
         public StreetTileColor Color { get;  set; }
         public Player Owner { get; private set; }
 
-        public void Action(Player player)
+        public override void Action(Player player)
         {
             throw new NotImplementedException();
         }

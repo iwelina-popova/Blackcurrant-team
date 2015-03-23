@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    using Interfaces;
-
-    public class ChanceTile : Tile,ITile
+    public class ChanceTile : Tile
     {
         public ChanceTile(int position)
             : base(position)
@@ -16,7 +14,7 @@ namespace MonopolyGame.Model
 
 
 
-        public void Action(Player player)
+        public override void Action(Player player)
         {
             throw new NotImplementedException();
         }

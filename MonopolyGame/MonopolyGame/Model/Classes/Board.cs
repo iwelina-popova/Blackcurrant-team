@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    using MonopolyGame.Interfaces;
-     public class Board
+    public class Board
     {
-         private const int BOARD_SIZE = 40;
+        private const int BOARD_SIZE = 40;
 
         public Board()
         {
-            this.BoardArr = new ITile[BOARD_SIZE];
+            this.BoardArr = new Tile[BOARD_SIZE];
             this.Players = new List<Player>();
 
             LoadTiles();
         }
 
-        public ITile[] BoardArr { get; private set; }
+        public Tile[] BoardArr { get; private set; }
 
         public int PlayerCount
         {
@@ -41,13 +40,13 @@ namespace MonopolyGame.Model
             this.Players.Add(player);
         }
 
-        public void LoadTiles() 
+        public void LoadTiles()
         {
             this.BoardArr[0] = new StartTile();
             this.BoardArr[1] = new StreetTile(1, "Old Kent Road", StreetTileColor.Brown);
             this.BoardArr[2] = new CommunityTile(2);
             this.BoardArr[3] = new StreetTile(3, "Whitechapel Road", StreetTileColor.Brown);
-            this.BoardArr[4] = new TaxTile(4,"Income Tax");
+            this.BoardArr[4] = new TaxTile(4, "Income Tax");
             this.BoardArr[5] = new StationTile(5, "Kings Cross Station");
             this.BoardArr[6] = new StreetTile(6, "The Angel Islington", StreetTileColor.LiteBlue);
             this.BoardArr[7] = new ChanceTile(7);
