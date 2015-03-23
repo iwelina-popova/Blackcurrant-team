@@ -12,11 +12,10 @@ namespace MonopolyGame.Model.Classes
     {
         private const int BOARD_SIZE = 40;
 
-        public Board()
+        private Board()
         {
             this.BoardArr = new Tile[BOARD_SIZE];
             this.Players = new List<Player>();
-
             LoadTiles();
         }
 
@@ -40,6 +39,11 @@ namespace MonopolyGame.Model.Classes
         public void AddPlayer(Player player)
         {
             this.Players.Add(player);
+        }
+
+        public static Board CreateBoardInstance() 
+        {
+            return new Board();
         }
 
         public void LoadTiles()

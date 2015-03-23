@@ -12,7 +12,7 @@
     {
         static void Main(string[] args)
         {
-            Board board = new Board();
+            Board board = Board.CreateBoardInstance();
             Player pesho = new Player("Pesho");
             Player gosho = new Player("Gosho");
             board.AddPlayer(pesho);
