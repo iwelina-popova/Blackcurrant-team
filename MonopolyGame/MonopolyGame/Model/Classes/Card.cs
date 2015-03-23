@@ -12,16 +12,6 @@ namespace MonopolyGame
 
         public int Money { get; set; }
 
-        public string Description
-        {
-            get
-            {
-                return this.description;
-            }
-            private set
-            {
-                this.description = value;
-            }
-        }
+        public string Description { get; set; }
     }
 }

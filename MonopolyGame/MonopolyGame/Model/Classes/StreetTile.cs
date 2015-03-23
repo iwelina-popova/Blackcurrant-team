@@ -8,21 +8,42 @@ namespace MonopolyGame.Model
 {
     public class StreetTile : Tile
     {
-        public StreetTile(int position, string name, StreetTileColor color) 
-            :base(position)
+        public StreetTile(int position, string name, StreetTileColor color, int price)
+            : base(position)
         {
             this.Name = name;
             this.Color = color;
+            this.Price = price;
         }
 
 
         public string Name { get; private set; }
-        public StreetTileColor Color { get;  set; }
+        public StreetTileColor Color { get; set; }
         public Player Owner { get; private set; }
+        public int Price { get; private set; }
 
         public override void Action(Player player)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Make your choice:\n1: Buy\n2: Skip");
+            string input = Console.ReadLine();
+
+            switch (input)
+            {
+                case "1": Buy(player); break;
+                case "2": Skip(); break;
+                default: throw new ArgumentOutOfRangeException("Incorrect choice!");
+            }
+        }
+
+        public void Buy(Player player)
+        {
+            player.Money -= this.Price;
+            Owner = player;
+        }
+
+        public void Skip()
+        {
+
         }
     }
 }

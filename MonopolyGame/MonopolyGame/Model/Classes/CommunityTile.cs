@@ -16,6 +16,7 @@ namespace MonopolyGame.Model
 
         public override void Action(Player player)
         {
+            //player.Money -= Community Sum
             throw new NotImplementedException();
         }
     }

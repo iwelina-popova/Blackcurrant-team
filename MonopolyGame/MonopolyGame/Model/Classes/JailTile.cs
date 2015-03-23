@@ -10,15 +10,23 @@ namespace MonopolyGame.Model
     {
         private int cycle;
 
-        public JailTile(int position) 
-            :base(position)
+        public JailTile(int position)
+            : base(position)
         {
             this.cycle = 3;
         }
 
         public override void Action(Player player)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Make your choice:\n1: Pay tax from 50$!\n2: Try to roll doubles!");
+            string input = Console.ReadLine();
+
+            switch (input)
+            {
+                case "1": PayJailTax(player); break;
+                case "2": TryToRollDoubles(player); break;
+                default: throw new ArgumentOutOfRangeException("Incorrect choice!");
+            }
         }
 
         public void PayJailTax(Player player)
@@ -39,13 +47,13 @@ namespace MonopolyGame.Model
 
                 if (cycle == 0)
                 {
-                    player.Money -= 50;
+                    PayJailTax(player);
                 }
             }
             else
             {
                 player.CanMove = true;
-            }            
+            }
         }
     }
 }
