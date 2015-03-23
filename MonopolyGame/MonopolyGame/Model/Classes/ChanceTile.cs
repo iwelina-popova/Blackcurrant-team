@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MonopolyGame.Model
+namespace MonopolyGame.Model.Classes
 {
     public class ChanceTile : Tile
     {

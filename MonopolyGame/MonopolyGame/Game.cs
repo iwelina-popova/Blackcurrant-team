@@ -6,8 +6,8 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    using Model;
-
+    using Model.Classes;
+   
     class Game
     {
         static void Main(string[] args)

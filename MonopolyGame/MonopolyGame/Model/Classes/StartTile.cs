@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MonopolyGame.Model
+namespace MonopolyGame.Model.Classes
 {
     public class StartTile : Tile
     {
@@ -14,7 +14,7 @@ namespace MonopolyGame.Model
         
         public override void Action(Player player)
         {
-            player.Money += 200;
+            player.AddMoney(200);
         }
     }
 }

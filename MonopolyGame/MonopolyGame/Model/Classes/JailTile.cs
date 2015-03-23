@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MonopolyGame.Model
+namespace MonopolyGame.Model.Classes
 {
     public class JailTile : Tile
     {
@@ -31,7 +31,7 @@ namespace MonopolyGame.Model
 
         public void PayJailTax(Player player)
         {
-            player.Money -= 50;
+            player.WidthDrawMoney(50);
         }
 
         public void TryToRollDoubles(Player player)

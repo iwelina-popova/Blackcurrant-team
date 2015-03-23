@@ -46,6 +46,7 @@
     <Compile Include="Model\Classes\Board.cs" />
     <Compile Include="Model\Classes\ChanceTile.cs" />
     <Compile Include="Model\Classes\CommunityTile.cs" />
+    <Compile Include="Model\Classes\FreeParkingTile.cs" />
     <Compile Include="Model\Classes\GoToJailTile.cs" />
     <Compile Include="Model\Classes\JailTile.cs" />
     <Compile Include="Model\Classes\StartTile.cs" />
@@ -54,16 +55,15 @@
     <Compile Include="Model\Classes\Dice.cs" />
     <Compile Include="Model\Classes\Player.cs" />
     <Compile Include="Model\Classes\StreetTile.cs" />
-    <Compile Include="Model\Classes\StreetTileColor.cs" />
+    <Compile Include="Model\Enumerations\StreetTileColor.cs" />
     <Compile Include="Model\Classes\Tile.cs" />
+    <Compile Include="Model\Interfaces\IBuyable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

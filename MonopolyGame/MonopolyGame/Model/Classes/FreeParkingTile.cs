@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model.Classes
 {
-    public class GoToJailTile: Tile
+    class FreeParkingTile : Tile
     {
-        public GoToJailTile(int position) : base(position)
+        public FreeParkingTile(int position) 
+            :base(position)
         { }
+
         public override void Action(Player player)
         {
-            //player.Position = Prison Position on the board
+            //Player doesn`t do anything...
         }
     }
 }

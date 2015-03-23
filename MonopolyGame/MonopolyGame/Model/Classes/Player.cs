@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MonopolyGame.Model
+namespace MonopolyGame.Model.Classes
 {
     public class Player
     {
@@ -14,12 +14,14 @@ namespace MonopolyGame.Model
             this.Position = 0;
             this.Money = 1000;
             this.CanMove = true;
+            this.IsBankrupt = false;
         }
 
         public string Name { get; private set; }
         public int Position { get; private set; }
-        public int Money { get; set; }
+        public int Money { get; private set; }
         public bool CanMove { get; set; }
+        public bool IsBankrupt { get; private set; }
         
         public void Move(Dice dice, Tile[] board)
         {
@@ -34,19 +36,39 @@ namespace MonopolyGame.Model
             board[this.Position].Action(this);
         }
 
-        public void AddMoney(int amount)
+        public bool AddMoney(int amount)
         {
-            this.Money += amount;
+            if (!this.IsBankrupt)
+            {
+                this.Money += amount;
+            }
+
+            return !this.IsBankrupt;
         }
 
-        public void WidthDrawMoney(int amount) 
+        public bool WidthDrawMoney(int amount) 
         {
-            this.Money -= amount;
+            if (!this.IsBankrupt)
+            {
+                this.Money -= amount;
+                
+                if (this.Money < 0)
+                {
+                    this.IsBankrupt = true;
+                }
+            }
+
+            return !this.IsBankrupt;
         }
 
-        public void DrawCard(Card card)
+        public bool DrawCard(Card card)
         {
-            AddMoney(card.Money);
+            if (!this.IsBankrupt)
+            {
+                AddMoney(card.Money);
+            }
+
+            return !this.IsBankrupt;
         }
 
         public override string ToString()
