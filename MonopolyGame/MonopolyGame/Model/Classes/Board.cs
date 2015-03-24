@@ -16,10 +16,15 @@ namespace MonopolyGame.Model.Classes
         {
             this.BoardArr = new Tile[BOARD_SIZE];
             this.Players = new List<Player>();
+            this.ChanceCards = new List<ChanceCard>();
+            this.CommunityCards = new List<CommunityCard>();
             LoadTiles();
+            LoadCards();
         }
 
         public Tile[] BoardArr { get; private set; }
+        public List<ChanceCard> ChanceCards { get; private set; }
+        public List<CommunityCard> CommunityCards { get; private set; }
 
         public int PlayerCount
         {
@@ -44,6 +49,22 @@ namespace MonopolyGame.Model.Classes
         public static Board CreateBoardInstance() 
         {
             return new Board();
+        }
+
+        public void LoadChanceCards()
+        {
+            this.ChanceCards.Add(new ChanceCard("First prize in NASA Challenge. You get a 100$ scholarship.", 100));
+        }
+
+        public void LoadCommunityCards()
+        {
+            this.CommunityCards.Add(new CommunityCard("Your Windows license has expired! Microsoft charged you 20$", 20));
+        }
+
+        public void LoadCards()
+        {
+            LoadChanceCards();
+            LoadCommunityCards();
         }
 
         public void LoadTiles()

@@ -44,7 +44,9 @@
     <Compile Include="Model\Classes\Card.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Model\Classes\Board.cs" />
+    <Compile Include="Model\Classes\ChanceCard.cs" />
     <Compile Include="Model\Classes\ChanceTile.cs" />
+    <Compile Include="Model\Classes\CommunityCard.cs" />
     <Compile Include="Model\Classes\CommunityTile.cs" />
     <Compile Include="Model\Classes\FreeParkingTile.cs" />
     <Compile Include="Model\Classes\GoToJailTile.cs" />

@@ -6,12 +6,22 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model.Classes
 {
-    public class Card 
+    public abstract class Card 
     {
-        private string description;
-
+        public Card(string description, int money)
+        {
+            this.Description = description;
+            this.Money = money;
+        }
         public int Money { get; set; }
 
-        public string Description { get; set; }
+        public string Description { get; private set; }
+
+        public abstract void Action(Player player);
+
+        public override string ToString()
+        {
+            return this.Description;
+        }
     }
 }
