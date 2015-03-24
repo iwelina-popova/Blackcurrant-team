@@ -23,17 +23,14 @@ namespace MonopolyGame.Model.Classes
         public bool CanMove { get; set; }
         public bool IsBankrupt { get; private set; }
         
-        public void Move(Dice dice, Tile[] board)
-        {
-            int firstDice = dice.Roll();
-            int secondDice = dice.Roll();
-            this.Position += firstDice + secondDice;
+        public void Move(int spaces, int boardSize)
+        {         
+            this.Position += spaces;
 
-            if (this.Position >= board.Length)
+            if (this.Position >= boardSize)
             {
-                this.Position -= board.Length - 1;
-            }
-            board[this.Position].Action(this);
+                this.Position -= boardSize - 1;
+            }           
         }
 
         public bool AddMoney(int amount)

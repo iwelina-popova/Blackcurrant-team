@@ -7,7 +7,7 @@
     using System.Threading.Tasks;
 
     using Model.Classes;
-   
+
     class Game
     {
         static void Main(string[] args)
@@ -17,27 +17,28 @@
             Player gosho = new Player("Gosho");
             board.AddPlayer(pesho);
             board.AddPlayer(gosho);
-            Dice dice = new Dice();
+            Dice firstDice = new Dice();
+            Dice secondDice = new Dice();
 
             while (board.PlayerCount > 1)
             {
 
-                gosho.Move(dice, board.BoardArr);
+                gosho.Move(firstDice.Roll() + secondDice.Roll(), board.BoardArr.Length);
+                board.BoardArr[gosho.Position].Action(gosho);
                 Console.WriteLine(gosho);
 
-                if (gosho.Money <= 0)
+                if (gosho.IsBankrupt)
                 {
                     board.RemovePlayer(gosho);
                     Console.WriteLine(String.Format("{0} Wins !", pesho.Name));
                     break;
                 }
 
-
-                pesho.Move(dice, board.BoardArr);
+                pesho.Move(firstDice.Roll() + secondDice.Roll(), board.BoardArr.Length);
+                board.BoardArr[pesho.Position].Action(pesho);
                 Console.WriteLine(pesho);
 
-                Console.WriteLine(pesho);
-                if (pesho.Money <= 0)
+                if (pesho.IsBankrupt)
                 {
                     board.RemovePlayer(pesho);
                     Console.WriteLine(String.Format("{0} Wins !", gosho.Name));

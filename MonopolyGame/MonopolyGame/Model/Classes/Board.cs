@@ -51,23 +51,23 @@ namespace MonopolyGame.Model.Classes
             return new Board();
         }
 
-        public void LoadChanceCards()
+        private void LoadChanceCards()
         {
             this.ChanceCards.Add(new ChanceCard("First prize in NASA Challenge. You get a 100$ scholarship.", 100));
         }
 
-        public void LoadCommunityCards()
+        private void LoadCommunityCards()
         {
             this.CommunityCards.Add(new CommunityCard("Your Windows license has expired! Microsoft charged you 20$", 20));
         }
 
-        public void LoadCards()
+        private void LoadCards()
         {
             LoadChanceCards();
             LoadCommunityCards();
         }
 
-        public void LoadTiles()
+        private void LoadTiles()
         {
             this.BoardArr[0] = new StartTile();
             this.BoardArr[1] = new StreetTile(1, "Old Kent Road", 60, StreetTileColor.Brown);
