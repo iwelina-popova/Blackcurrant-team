@@ -11,19 +11,21 @@ namespace MonopolyGame.Model.Classes
     public class StationTile : Tile,IBuyable
     {
         private const int STATION_PRICE = 200;
+        private const int STATION_RENT = 25;
 
         public StationTile(int position, string name)
             : base(position)
         {
             this.Name = name;
             this.Owner = null;
+            this.BaseRent = STATION_RENT;
             this.Price = STATION_PRICE;
         }
 
         public string Name { get; private set; }
         public Player Owner{ get; protected set; }
         public int Price { get; protected set; }
-        public int BaseRent { get; private set; }
+        public int BaseRent { get; protected set; }
 
         public override void Action(Player player)
         {

@@ -17,13 +17,11 @@
             Player gosho = new Player("Gosho");
             board.AddPlayer(pesho);
             board.AddPlayer(gosho);
-            Dice firstDice = new Dice();
-            Dice secondDice = new Dice();
 
             while (board.PlayerCount > 1)
             {
 
-                gosho.Move(firstDice.Roll() + secondDice.Roll(), board.BoardArr.Length);
+                gosho.Move(Dice.Roll() + Dice.Roll(), board.BoardArr.Length);
                 if (board.BoardArr[gosho.Position] != null)
                 {
                     board.BoardArr[gosho.Position].Action(gosho);
@@ -37,7 +35,7 @@
                     break;
                 }
 
-                pesho.Move(firstDice.Roll() + secondDice.Roll(), board.BoardArr.Length);
+                pesho.Move(Dice.Roll() + Dice.Roll(), board.BoardArr.Length);
                 if (board.BoardArr[pesho.Position] != null)
                 {
                     board.BoardArr[pesho.Position].Action(pesho);

@@ -8,21 +8,21 @@ namespace MonopolyGame.Model.Classes
 {
     public class Dice
     {
-        private Random generator;
+        private static Random generator;
 
-        public Dice()
+        static Dice()
         {
-            this.generator = new Random();
+            generator = new Random();
         }
 
-        public int Roll()
+        public static int Roll()
         {
             return generator.Next(1, 7);
         }
 
         public static bool TryToRollDoubles() 
         {
-            return new Dice().Roll() == new Dice().Roll();
+            return Dice.Roll() == Dice.Roll();
         }
     }
 }
