@@ -24,7 +24,7 @@ namespace MonopolyGame.Model.Classes
             switch (input)
             {
                 case "1": PayJailTax(player); break;
-                case "2": TryToRollDoubles(player); break;
+                case "2": StayInJail(player); break;
                 default: throw new ArgumentOutOfRangeException("Incorrect choice!");
             }
         }
@@ -34,26 +34,22 @@ namespace MonopolyGame.Model.Classes
             player.WidthDrawMoney(50);
         }
 
-        //public void TryToRollDoubles(Player player)
-        //{
-        //    Dice dice = new Dice();
-        //    int firstDice = dice.Roll();
-        //    int secondDice = dice.Roll();
+        public void StayInJail(Player player)
+        {
+            if (!Dice.TryToRollDoubles())
+            {
+                player.CanMove = false;
+                --cycle;
 
-        //    if (firstDice != secondDice)
-        //    {
-        //        player.CanMove = false;
-        //        --cycle;
-
-        //        if (cycle == 0)
-        //        {
-        //            PayJailTax(player);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        player.CanMove = true;
-        //    }
-        //}
+                if (cycle == 0)
+                {
+                    PayJailTax(player);
+                }
+            }
+            else
+            {
+                player.CanMove = true;
+            }
+        }
     }
 }

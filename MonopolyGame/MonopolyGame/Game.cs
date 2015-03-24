@@ -24,7 +24,10 @@
             {
 
                 gosho.Move(firstDice.Roll() + secondDice.Roll(), board.BoardArr.Length);
-                board.BoardArr[gosho.Position].Action(gosho);
+                if (board.BoardArr[gosho.Position] != null)
+                {
+                    board.BoardArr[gosho.Position].Action(gosho);
+                }
                 Console.WriteLine(gosho);
 
                 if (gosho.IsBankrupt)
@@ -35,7 +38,10 @@
                 }
 
                 pesho.Move(firstDice.Roll() + secondDice.Roll(), board.BoardArr.Length);
-                board.BoardArr[pesho.Position].Action(pesho);
+                if (board.BoardArr[pesho.Position] != null)
+                {
+                    board.BoardArr[pesho.Position].Action(pesho);
+                }
                 Console.WriteLine(pesho);
 
                 if (pesho.IsBankrupt)

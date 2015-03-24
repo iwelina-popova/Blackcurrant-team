@@ -89,7 +89,7 @@ namespace MonopolyGame.Model.Classes
             this.BoardArr[17] = new CommunityTile(17);
             this.BoardArr[18] = new StreetTile(18, "Marlborough Street", 180, StreetTileColor.Orange);
             this.BoardArr[19] = new StreetTile(19, "Vine Street", 200, StreetTileColor.Orange);
-            this.BoardArr[20] = new FreeParkingTile(20);
+            this.BoardArr[20] = null;
             this.BoardArr[21] = new StreetTile(21, "Strand", 220, StreetTileColor.Red);
             this.BoardArr[22] = new ChanceTile(22);
             this.BoardArr[23] = new StreetTile(23, "Fleet Street", 220, StreetTileColor.Red);
