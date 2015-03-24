@@ -30,6 +30,7 @@ namespace MonopolyGame.Model.Classes
             if (this.Position >= boardSize)
             {
                 this.Position -= boardSize - 1;
+                this.AddMoney(200);
             }           
         }
 
