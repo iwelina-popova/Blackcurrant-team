@@ -19,5 +19,10 @@ namespace MonopolyGame.Model.Classes
         {
             return generator.Next(1, 7);
         }
+
+        public static bool TryToRollDoubles() 
+        {
+            return new Dice().Roll() == new Dice().Roll();
+        }
     }
 }

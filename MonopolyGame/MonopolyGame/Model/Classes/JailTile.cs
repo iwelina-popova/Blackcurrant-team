@@ -34,26 +34,26 @@ namespace MonopolyGame.Model.Classes
             player.WidthDrawMoney(50);
         }
 
-        public void TryToRollDoubles(Player player)
-        {
-            Dice dice = new Dice();
-            int firstDice = dice.Roll();
-            int secondDice = dice.Roll();
+        //public void TryToRollDoubles(Player player)
+        //{
+        //    Dice dice = new Dice();
+        //    int firstDice = dice.Roll();
+        //    int secondDice = dice.Roll();
 
-            if (firstDice != secondDice)
-            {
-                player.CanMove = false;
-                --cycle;
+        //    if (firstDice != secondDice)
+        //    {
+        //        player.CanMove = false;
+        //        --cycle;
 
-                if (cycle == 0)
-                {
-                    PayJailTax(player);
-                }
-            }
-            else
-            {
-                player.CanMove = true;
-            }
-        }
+        //        if (cycle == 0)
+        //        {
+        //            PayJailTax(player);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        player.CanMove = true;
+        //    }
+        //}
     }
 }
