@@ -23,7 +23,16 @@
 
         public bool CheckDistrictOwner(List<StreetTile> district)
         {
-            throw new NotImplementedException();
+            var owner = district.First().Owner;
+            foreach (var street in district)
+            {
+                if (street.Owner != owner)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
