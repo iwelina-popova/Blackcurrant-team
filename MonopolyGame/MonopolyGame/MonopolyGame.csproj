@@ -41,24 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Classes\Card.cs" />
+    <Compile Include="Model\Classes\Cards\Card.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Model\Classes\Board.cs" />
-    <Compile Include="Model\Classes\ChanceCard.cs" />
-    <Compile Include="Model\Classes\ChanceTile.cs" />
-    <Compile Include="Model\Classes\CommunityCard.cs" />
-    <Compile Include="Model\Classes\CommunityTile.cs" />
+    <Compile Include="Model\Classes\Cards\ChanceCard.cs" />
+    <Compile Include="Model\Classes\Tiles\ChanceTile.cs" />
+    <Compile Include="Model\Classes\Cards\CommunityCard.cs" />
+    <Compile Include="Model\Classes\Tiles\CommunityTile.cs" />
     <Compile Include="Model\Classes\District.cs" />
-    <Compile Include="Model\Classes\GoToJailTile.cs" />
-    <Compile Include="Model\Classes\JailTile.cs" />
-    <Compile Include="Model\Classes\StartTile.cs" />
-    <Compile Include="Model\Classes\StationTile.cs" />
-    <Compile Include="Model\Classes\TaxTile.cs" />
+    <Compile Include="Model\Classes\Tiles\GoToJailTile.cs" />
+    <Compile Include="Model\Classes\Tiles\JailTile.cs" />
+    <Compile Include="Model\Classes\Tiles\StartTile.cs" />
+    <Compile Include="Model\Classes\Tiles\StationTile.cs" />
+    <Compile Include="Model\Classes\Tiles\TaxTile.cs" />
     <Compile Include="Model\Classes\Dice.cs" />
     <Compile Include="Model\Classes\Player.cs" />
-    <Compile Include="Model\Classes\StreetTile.cs" />
+    <Compile Include="Model\Classes\Tiles\StreetTile.cs" />
     <Compile Include="Model\Enumerations\StreetTileColor.cs" />
-    <Compile Include="Model\Classes\Tile.cs" />
+    <Compile Include="Model\Classes\Tiles\Tile.cs" />
     <Compile Include="Model\Interfaces\IBuyable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
