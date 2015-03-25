@@ -39,16 +39,5 @@
 
             return true;
         }
-
-        public int PayRent()
-        {
-            int districtRent = 0;
-
-            foreach (var street in this.Section)
-            {
-                districtRent += street.BaseRent;
-            }
-            return districtRent;
-        }
     }
 }
