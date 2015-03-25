@@ -8,7 +8,7 @@ namespace MonopolyGame.Model.Classes
 {
     using Interfaces;
 
-    public class StationTile : Tile,IBuyable
+    public class StationTile : Tile, IBuyable
     {
         private const int STATION_PRICE = 200;
         private const int STATION_RENT = 25;
@@ -23,7 +23,7 @@ namespace MonopolyGame.Model.Classes
         }
 
         public string Name { get; private set; }
-        public Player Owner{ get; protected set; }
+        public Player Owner { get; protected set; }
         public int Price { get; protected set; }
         public int BaseRent { get; protected set; }
 
@@ -41,7 +41,7 @@ namespace MonopolyGame.Model.Classes
                     default: throw new ArgumentOutOfRangeException("Incorrect choice!");
                 }
             }
-            else 
+            else
             {
                 PayRent(player);
             }
@@ -66,7 +66,7 @@ namespace MonopolyGame.Model.Classes
             {
                 return player.WidthDrawMoney(this.BaseRent);
             }
-            else 
+            else
             {
                 //TODO:Implement advanced renting with calculation of properties
                 throw new NotImplementedException("Implement Advanced renting");

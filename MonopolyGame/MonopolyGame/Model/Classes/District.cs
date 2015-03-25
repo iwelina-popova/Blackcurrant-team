@@ -6,25 +6,30 @@
 
     public class District
     {
+        public List<StreetTile> Section { get; set; }
+
+        public District()
+        {
+            this.Section = new List<StreetTile>();
+        }
+
         public List<StreetTile> LoadDistrict(List<StreetTile> streets, StreetTile currentStreet)
         {
-            List<StreetTile> district = new List<StreetTile>();
-
             foreach (var street in streets)
             {
                 if (street.Color == currentStreet.Color)
                 {
-                    district.Add(street);
+                    this.Section.Add(street);
                 }
             }
 
-            return district;
+            return this.Section;
         }
 
-        public bool CheckDistrictOwner(List<StreetTile> district)
+        public bool CheckDistrictOwner()
         {
-            var owner = district.First().Owner;
-            foreach (var street in district)
+            var owner = this.Section.First().Owner;
+            foreach (var street in this.Section)
             {
                 if (street.Owner != owner)
                 {
@@ -33,6 +38,17 @@
             }
 
             return true;
+        }
+
+        public int PayRent()
+        {
+            int districtRent = 0;
+
+            foreach (var street in this.Section)
+            {
+                districtRent += street.BaseRent;
+            }
+            return districtRent;
         }
     }
 }
