@@ -17,7 +17,11 @@ namespace MonopolyGame.Model.Classes
 
         public static int Roll()
         {
-            return generator.Next(1, 7);
+            int dice = generator.Next(1, 7);
+            Console.WriteLine(dice);
+            return dice;
+
+            //return generator.Next(1, 7);
         }
 
         public static bool TryToRollDoubles() 

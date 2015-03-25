@@ -20,7 +20,6 @@
 
             while (board.PlayerCount > 1)
             {
-
                 gosho.Move(Dice.Roll() + Dice.Roll(), board.BoardArr.Length);
                 if (board.BoardArr[gosho.Position] != null)
                 {

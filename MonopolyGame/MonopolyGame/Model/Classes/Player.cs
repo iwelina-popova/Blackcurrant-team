@@ -24,14 +24,14 @@ namespace MonopolyGame.Model.Classes
         public bool IsBankrupt { get; private set; }
         
         public void Move(int spaces, int boardSize)
-        {         
-            this.Position += spaces;
+        {
+                this.Position += spaces;
 
-            if (this.Position >= boardSize)
-            {
-                this.Position -= boardSize - 1;
-                this.AddMoney(200);
-            }           
+                if (this.Position >= boardSize)
+                {
+                    this.Position -= boardSize;
+                    this.AddMoney(200);
+                }
         }
 
         public bool AddMoney(int amount)

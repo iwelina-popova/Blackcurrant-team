@@ -24,7 +24,7 @@ namespace MonopolyGame.Model.Classes
             switch (input)
             {
                 case "1": PayJailTax(player); break;
-                case "2": StayInJail(player); break;
+                case "2": EscapeFree(player); break;
                 default: throw new ArgumentOutOfRangeException("Incorrect choice!");
             }
         }
@@ -34,7 +34,7 @@ namespace MonopolyGame.Model.Classes
             player.WidthDrawMoney(50);
         }
 
-        public void StayInJail(Player player)
+        public void EscapeFree(Player player)
         {
             if (!Dice.TryToRollDoubles())
             {
