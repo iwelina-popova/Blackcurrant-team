@@ -48,6 +48,7 @@
     <Compile Include="Model\Classes\ChanceTile.cs" />
     <Compile Include="Model\Classes\CommunityCard.cs" />
     <Compile Include="Model\Classes\CommunityTile.cs" />
+    <Compile Include="Model\Classes\District.cs" />
     <Compile Include="Model\Classes\GoToJailTile.cs" />
     <Compile Include="Model\Classes\JailTile.cs" />
     <Compile Include="Model\Classes\StartTile.cs" />
