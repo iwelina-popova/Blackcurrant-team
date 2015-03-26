@@ -44,7 +44,7 @@ namespace MonopolyGame.Model.Classes
             return !this.IsBankrupt;
         }
 
-        public bool WidthDrawMoney(int amount) 
+        public bool WidthdrawMoney(int amount) 
         {
             if (!this.IsBankrupt)
             {

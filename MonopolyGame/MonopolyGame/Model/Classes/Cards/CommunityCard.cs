@@ -16,7 +16,7 @@ namespace MonopolyGame.Model.Classes
 
         public override void Action(Player player)
         {
-            player.WidthDrawMoney(base.Money);
+            player.WidthdrawMoney(base.Money);
         }
     }
 }

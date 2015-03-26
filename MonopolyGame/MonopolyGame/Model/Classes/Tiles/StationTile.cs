@@ -47,8 +47,8 @@ namespace MonopolyGame.Model.Classes
 
 
         public bool Buy(Player player)
-        {
-            if (player.WidthDrawMoney(this.Price))
+        {   
+            if (player.WidthdrawMoney(this.Price))
             {
                 this.Owner = player;
                 return true;
@@ -62,13 +62,16 @@ namespace MonopolyGame.Model.Classes
         {
             if (this.Owner == null)
             {
-                return player.WidthDrawMoney(this.BaseRent);
+                return player.WidthdrawMoney(this.BaseRent);
             }
-            else
+            else if(this.Owner != player)
             {
+                this.Owner.AddMoney(this.BaseRent);
+                player.WidthdrawMoney(this.BaseRent);
                 //TODO:Implement advanced renting with calculation of properties
-                throw new NotImplementedException("Implement Advanced renting");
             }
+
+            return true;
         }
     }
 }

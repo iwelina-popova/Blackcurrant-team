@@ -23,7 +23,7 @@ namespace MonopolyGame.Model.Classes
 
         public bool Pay(Player player) 
         {
-            return player.WidthDrawMoney(this.Tax);
+            return player.WidthdrawMoney(this.Tax);
         }
     }
 }

@@ -32,12 +32,12 @@ namespace MonopolyGame.Model.Classes
 
         public void PayJailTax(Player player)
         {
-            player.WidthDrawMoney(50);
+            player.WidthdrawMoney(50);
         }
 
         public void EscapeFree(Player player)
         {
-            if (!Dice.TryToRollDoubles())
+            if (!Dice.TryToRollDoubles(Dice.Roll(), Dice.Roll()))
             {
                 player.CanMove = false;
                 --cycle;
