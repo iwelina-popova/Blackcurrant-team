@@ -8,8 +8,10 @@ namespace MonopolyGame.Model.Classes
 {
     public class ChanceTile : Tile
     {
-        public ChanceTile(int position)
-            : base(position)
+        private const string CHANCE_TILE_NAME = "Chance";
+
+        public ChanceTile()
+            : base(CHANCE_TILE_NAME)
         { }
 
 

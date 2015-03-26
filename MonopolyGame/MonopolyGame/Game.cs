@@ -20,7 +20,12 @@
 
             while (board.PlayerCount > 1)
             {
-                gosho.Move(Dice.Roll() + Dice.Roll(), board.BoardArr.Length);
+                int firstDice = Dice.Roll();
+                int secondDice = Dice.Roll();
+                Console.WriteLine("{0} rolls dice...", gosho.Name);
+                Console.WriteLine(String.Format("first dice rolled: {0} second dice rolled: {1}",firstDice, secondDice));
+
+                gosho.Move(firstDice + secondDice, board.BoardArr.Length);
                 if (board.BoardArr[gosho.Position] != null)
                 {
                     board.BoardArr[gosho.Position].Action(gosho);
@@ -34,7 +39,12 @@
                     break;
                 }
 
-                pesho.Move(Dice.Roll() + Dice.Roll(), board.BoardArr.Length);
+                firstDice = Dice.Roll();
+                secondDice = Dice.Roll();
+                Console.WriteLine("{0} rolls dice...",pesho.Name);
+                Console.WriteLine(String.Format("first dice rolled: {0} second dice rolled: {1}", firstDice, secondDice));
+
+                pesho.Move(firstDice + secondDice, board.BoardArr.Length);
                 if (board.BoardArr[pesho.Position] != null)
                 {
                     board.BoardArr[pesho.Position].Action(pesho);

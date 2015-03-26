@@ -8,12 +8,12 @@ namespace MonopolyGame.Model.Classes
 {
     public abstract class Tile
     {
-        public Tile(int position)
+        public Tile(string name)
         {
-            this.Position = position;
+            this.Name = name;
         }
 
-        public int Position { get; private set; }
+        public string Name { get; private set; }
 
         public abstract void Action(Player player);
     }

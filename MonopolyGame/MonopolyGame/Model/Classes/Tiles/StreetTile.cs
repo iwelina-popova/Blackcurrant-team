@@ -11,8 +11,8 @@ namespace MonopolyGame.Model.Classes
 
     public class StreetTile : StationTile,IBuyable
     {
-        public StreetTile(int position, string name, int price, int baseRent, StreetTileColor color)
-            : base(position, name)
+        public StreetTile( string name, int price, int baseRent, StreetTileColor color)
+            : base(name)
         {
             this.BaseRent = baseRent;
             this.Price = price;

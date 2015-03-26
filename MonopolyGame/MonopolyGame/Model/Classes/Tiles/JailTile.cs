@@ -8,10 +8,11 @@ namespace MonopolyGame.Model.Classes
 {
     public class JailTile : Tile
     {
+        private const string JAIL_TILE_NAME = "Jail";
         private int cycle;
 
-        public JailTile(int position)
-            : base(position)
+        public JailTile()
+            : base(JAIL_TILE_NAME)
         {
             this.cycle = 3;
         }

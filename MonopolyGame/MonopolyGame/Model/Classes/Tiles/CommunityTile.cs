@@ -8,8 +8,10 @@ namespace MonopolyGame.Model.Classes
 {
     public class CommunityTile : Tile
     {
-        public CommunityTile(int position)
-            : base(position)
+        private const string COMMUNITY_TILE_NAME = "Community Chest";
+
+        public CommunityTile()
+            : base(COMMUNITY_TILE_NAME)
         { }
 
 
