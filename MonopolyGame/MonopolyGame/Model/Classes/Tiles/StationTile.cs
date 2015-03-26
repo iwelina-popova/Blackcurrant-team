@@ -29,14 +29,17 @@ namespace MonopolyGame.Model.Classes
         {
             if (this.Owner == null)
             {
-                Console.WriteLine("Make your choice:\n1: Buy\n2: Skip");
-                string input = Console.ReadLine();
-
-                switch (input)
+                if (player.Money >= this.Price)
                 {
-                    case "1": Buy(player); break;
-                    case "2": break;
-                    default: throw new ArgumentOutOfRangeException("Incorrect choice!");
+                    Console.WriteLine("Make your choice:\n1: Buy\n2: Skip");
+                    string input = Console.ReadLine();
+
+                    switch (input)
+                    {
+                        case "1": Buy(player); break;
+                        case "2": break;
+                        default: throw new ArgumentOutOfRangeException("Incorrect choice!");
+                    }
                 }
             }
             else
