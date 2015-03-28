@@ -18,15 +18,15 @@ namespace MonopolyGame.Model.Classes
         {
             this.Tiles = new Tile[BOARD_SIZE];
             this.Players = new List<Player>();
-            this.ChanceCards = new List<ChanceCard>();
-            this.CommunityCards = new List<CommunityCard>();
+            //this.ChanceCards = new List<ChanceCard>();
+            //this.CommunityCards = new List<CommunityCard>();
             LoadTiles();
-            LoadCards();
+            //LoadCards();
         }
 
         public Tile[] Tiles { get; private set; }
-        public List<ChanceCard> ChanceCards { get; private set; }
-        public List<CommunityCard> CommunityCards { get; private set; }
+        //public List<ChanceCard> ChanceCards { get; private set; }
+        //public List<CommunityCard> CommunityCards { get; private set; }
        
         public static Board Instance
         {
@@ -59,21 +59,21 @@ namespace MonopolyGame.Model.Classes
             this.Players.Add(player);
         }
 
-        private void LoadChanceCards()
-        {
-            this.ChanceCards.Add(new ChanceCard("First prize in NASA Challenge. You get a 100$ scholarship.", 100));
-        }
+        //private void LoadChanceCards()
+        //{
+        //    this.ChanceCards.Add(new ChanceCard("First prize in NASA Challenge. You get a 100$ scholarship.", 100));
+        //}
 
-        private void LoadCommunityCards()
-        {
-            this.CommunityCards.Add(new CommunityCard("Your Windows license has expired! Microsoft charged you 20$", 20));
-        }
+        //private void LoadCommunityCards()
+        //{
+        //    this.CommunityCards.Add(new CommunityCard("Your Windows license has expired! Microsoft charged you 20$", 20));
+        //}
 
-        private void LoadCards()
-        {
-            LoadChanceCards();
-            LoadCommunityCards();
-        }
+        //private void LoadCards()
+        //{
+        //    LoadChanceCards();
+        //    LoadCommunityCards();
+        //}
 
         private void LoadTiles()
         {

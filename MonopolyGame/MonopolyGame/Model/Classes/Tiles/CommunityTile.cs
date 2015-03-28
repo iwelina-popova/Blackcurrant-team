@@ -14,12 +14,24 @@ namespace MonopolyGame.Model.Classes
             : base(COMMUNITY_TILE_NAME)
         { }
 
+        static CommunityTile() 
+        {
+            Cards = new Queue<CommunityCard>();
+        }
 
+        public static Queue<CommunityCard> Cards { get; private set; }
 
         public override void Action(Player player)
         {
-            //player.Money -= Community Sum
-            throw new NotImplementedException();
+            CommunityCard currentCard = player.DrawCard(Cards);
+            currentCard.Action(player);
+        }
+
+        private static void LoadCards()
+        {
+            Cards.Enqueue(new CommunityCard("Test", 200));
+            Cards.Enqueue(new CommunityCard("Description", 100));
+            Cards.Enqueue(new CommunityCard("Stuff", 150));
         }
     }
 }

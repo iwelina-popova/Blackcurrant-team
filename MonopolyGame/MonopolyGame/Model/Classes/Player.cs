@@ -59,14 +59,17 @@ namespace MonopolyGame.Model.Classes
             return !this.IsBankrupt;
         }
 
-        public bool DrawCard(Card card)
+        public T DrawCard<T>(Queue<T> cards) where T : Card
         {
-            if (!this.IsBankrupt)
-            {
-                AddMoney(card.Money);
-            }
+            //if (!this.IsBankrupt)
+            //{
+            //    AddMoney(card.Money);
+            //}
 
-            return !this.IsBankrupt;
+            T currentCard = cards.Dequeue();
+            cards.Enqueue(currentCard);
+
+            return currentCard;
         }
 
         public override string ToString()

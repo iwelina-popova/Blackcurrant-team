@@ -14,11 +14,24 @@ namespace MonopolyGame.Model.Classes
             : base(CHANCE_TILE_NAME)
         { }
 
+        static ChanceTile() 
+        {
+            Cards = new Queue<ChanceCard>();
+        }
 
+        public static Queue<ChanceCard> Cards { get; private set; }
 
         public override void Action(Player player)
         {
-            throw new NotImplementedException();
+            ChanceCard currentCard = player.DrawCard(Cards);
+            currentCard.Action(player);
+        }
+
+        private static void LoadCards() 
+        {
+            Cards.Enqueue(new ChanceCard("test", 200));
+            Cards.Enqueue(new ChanceCard("Description", 100));
+            Cards.Enqueue(new ChanceCard("Stuff", 150));
         }
     }
 }
