@@ -17,6 +17,7 @@ namespace MonopolyGame.Model.Classes
         static CommunityTile() 
         {
             Cards = new Queue<CommunityCard>();
+            LoadCards();
         }
 
         public static Queue<CommunityCard> Cards { get; private set; }

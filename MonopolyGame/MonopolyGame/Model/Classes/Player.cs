@@ -61,11 +61,6 @@ namespace MonopolyGame.Model.Classes
 
         public T DrawCard<T>(Queue<T> cards) where T : Card
         {
-            //if (!this.IsBankrupt)
-            //{
-            //    AddMoney(card.Money);
-            //}
-
             T currentCard = cards.Dequeue();
             cards.Enqueue(currentCard);
 

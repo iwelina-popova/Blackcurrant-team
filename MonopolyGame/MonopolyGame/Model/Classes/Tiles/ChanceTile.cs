@@ -17,6 +17,7 @@ namespace MonopolyGame.Model.Classes
         static ChanceTile() 
         {
             Cards = new Queue<ChanceCard>();
+            LoadCards();
         }
 
         public static Queue<ChanceCard> Cards { get; private set; }

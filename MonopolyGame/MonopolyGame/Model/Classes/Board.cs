@@ -79,12 +79,12 @@ namespace MonopolyGame.Model.Classes
         {
             this.Tiles[0] = new StartTile();
             this.Tiles[1] = new StreetTile("Old Kent Road", 60, 2, StreetTileColor.Brown);
-            this.Tiles[2] = null;//new CommunityTile();
+            this.Tiles[2] = new CommunityTile();
             this.Tiles[3] = new StreetTile("Whitechapel Road", 60, 4, StreetTileColor.Brown);
             this.Tiles[4] = new TaxTile("Income Tax", 200);
             this.Tiles[5] = new StationTile("Kings Cross Station");
             this.Tiles[6] = new StreetTile("The Angel Islington", 100, 6, StreetTileColor.LiteBlue);
-            this.Tiles[7] = null;//new ChanceTile();
+            this.Tiles[7] = new ChanceTile();
             this.Tiles[8] = new StreetTile("Euston Road", 100, 6, StreetTileColor.LiteBlue);
             this.Tiles[9] = new StreetTile("Pentoville Road", 8, 120, StreetTileColor.LiteBlue);
             this.Tiles[10] = new JailTile();
@@ -94,12 +94,12 @@ namespace MonopolyGame.Model.Classes
             this.Tiles[14] = new StreetTile("Northmurl`d Avenue", 160, 12, StreetTileColor.Pink);
             this.Tiles[15] = new StationTile("Marylebone Station");
             this.Tiles[16] = new StreetTile("Bow Street", 180, 14, StreetTileColor.Orange);
-            this.Tiles[17] = null;//new CommunityTile();
+            this.Tiles[17] = new CommunityTile();
             this.Tiles[18] = new StreetTile("Marlborough Street", 180, 14, StreetTileColor.Orange);
             this.Tiles[19] = new StreetTile("Vine Street", 200, 16, StreetTileColor.Orange);
             this.Tiles[20] = null;
             this.Tiles[21] = new StreetTile("Strand", 220, 18, StreetTileColor.Red);
-            this.Tiles[22] = null;//new ChanceTile();
+            this.Tiles[22] = new ChanceTile();
             this.Tiles[23] = new StreetTile("Fleet Street", 220, 18, StreetTileColor.Red);
             this.Tiles[24] = new StreetTile("Trafalgar Square", 240, 20, StreetTileColor.Red);
             this.Tiles[25] = new StationTile("Fenchurch st. Station");
@@ -110,10 +110,10 @@ namespace MonopolyGame.Model.Classes
             this.Tiles[30] = new GoToJailTile();
             this.Tiles[31] = new StreetTile("Regent Street", 300, 26, StreetTileColor.Green);
             this.Tiles[32] = new StreetTile("Oxford Street", 300, 26, StreetTileColor.Green);
-            this.Tiles[33] = null;//new CommunityTile();
+            this.Tiles[33] = new CommunityTile();
             this.Tiles[34] = new StreetTile("Bond Street", 320, 28, StreetTileColor.Green);
             this.Tiles[35] = new StationTile("Liverpool st. Station");
-            this.Tiles[36] = null;//new ChanceTile();
+            this.Tiles[36] = new ChanceTile();
             this.Tiles[37] = new StreetTile("Park Lane", 350, 35, StreetTileColor.DarkBlue);
             this.Tiles[38] = new TaxTile("Super Tax", 100);
             this.Tiles[39] = new StreetTile("Mayfair", 400, 50, StreetTileColor.DarkBlue);
