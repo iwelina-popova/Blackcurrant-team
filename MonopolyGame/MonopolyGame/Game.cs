@@ -10,6 +10,19 @@
 
     class Game
     {
+        public static void PlayerTurn(Player player, Tile[] tiles, int firstRoll, int secondRoll)
+        {
+            Tile currentTile;
+
+            player.Move(firstRoll + secondRoll, tiles.Length);
+            if (tiles[player.Position] != null)
+            {
+                currentTile = tiles[player.Position];
+                currentTile.Action(player);
+            }
+            Console.WriteLine(player);
+        }
+
         static void Main(string[] args)
         {
             Board board = Board.Instance;
@@ -20,41 +33,24 @@
 
             while (board.PlayerCount > 1)
             {
-                int firstDice = Dice.Roll();
-                int secondDice = Dice.Roll();
-                Console.WriteLine("{0} rolls dice...", gosho.Name);
-                Console.WriteLine(String.Format("first dice rolled: {0} second dice rolled: {1}",firstDice, secondDice));
-
-                gosho.Move(firstDice + secondDice, board.BoardArr.Length);
-                if (board.BoardArr[gosho.Position] != null)
+                foreach (Player player in board.Players)
                 {
-                    board.BoardArr[gosho.Position].Action(gosho);
-                }
-                Console.WriteLine(gosho);
+                    int firstRoll = Dice.Roll();
+                    int secondRoll = Dice.Roll();
+                    Console.WriteLine("{0} rolls dice...", gosho.Name);
+                    Console.WriteLine(String.Format("first dice rolled: {0} second dice rolled: {1}", firstRoll, secondRoll));
 
-                if (gosho.IsBankrupt)
-                {
-                    board.RemovePlayer(gosho);
-                    Console.WriteLine(String.Format("{0} Wins !", pesho.Name));
-                    break;
-                }
+                    PlayerTurn(player, board.Tiles, firstRoll, secondRoll);
 
-                firstDice = Dice.Roll();
-                secondDice = Dice.Roll();
-                Console.WriteLine("{0} rolls dice...",pesho.Name);
-                Console.WriteLine(String.Format("first dice rolled: {0} second dice rolled: {1}", firstDice, secondDice));
-
-                pesho.Move(firstDice + secondDice, board.BoardArr.Length);
-                if (board.BoardArr[pesho.Position] != null)
-                {
-                    board.BoardArr[pesho.Position].Action(pesho);
-                }
-                Console.WriteLine(pesho);
-
-                if (pesho.IsBankrupt)
-                {
-                    board.RemovePlayer(pesho);
-                    Console.WriteLine(String.Format("{0} Wins !", gosho.Name));
+                    if (player.IsBankrupt)
+                    {
+                        board.RemovePlayer(player);
+                        if (board.PlayerCount <= 1)
+                        {
+                            Console.WriteLine(String.Format("{0} Wins !", board.Players[0].Name));
+                            break;
+                        }
+                    }
                 }
             }
 
