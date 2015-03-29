@@ -51,6 +51,7 @@
     <Compile Include="Model\Classes\District.cs" />
     <Compile Include="Model\Classes\Tiles\GoToJailTile.cs" />
     <Compile Include="Model\Classes\Tiles\JailTile.cs" />
+    <Compile Include="Model\Classes\Tiles\PropertyTile.cs" />
     <Compile Include="Model\Classes\Tiles\StartTile.cs" />
     <Compile Include="Model\Classes\Tiles\StationTile.cs" />
     <Compile Include="Model\Classes\Tiles\TaxTile.cs" />

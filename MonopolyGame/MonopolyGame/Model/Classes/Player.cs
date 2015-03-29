@@ -15,6 +15,7 @@ namespace MonopolyGame.Model.Classes
             this.Money = 1000;
             this.CanMove = true;
             this.IsBankrupt = false;
+            this.Properties = new List<PropertyTile>();
         }
 
         public string Name { get; private set; }
@@ -22,6 +23,7 @@ namespace MonopolyGame.Model.Classes
         public int Money { get; private set; }
         public bool CanMove { get; set; }
         public bool IsBankrupt { get; private set; }
+        public List<PropertyTile> Properties { get; private set; }
         
         public void Move(int spaces, int boardSize)
         {

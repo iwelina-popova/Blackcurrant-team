@@ -8,77 +8,37 @@ namespace MonopolyGame.Model.Classes
 {
     using Interfaces;
 
-    public class StationTile : Tile, IBuyable
+    public class StationTile : PropertyTile, IBuyable
     {
         private const int STATION_PRICE = 200;
         private const int STATION_RENT = 25;
 
         public StationTile(string name)
-            : base(name)
+            : base(name, STATION_PRICE, STATION_RENT)
         {
-            this.Owner = null;
-            this.BaseRent = STATION_RENT;
-            this.Price = STATION_PRICE;
+            NumberOfStations++;
         }
 
-        public Player Owner { get; protected set; }
-        public int Price { get; protected set; }
-        public int BaseRent { get; protected set; }
-
-        public override void Action(Player player)
+        static StationTile() 
         {
-            if (this.Owner == null)
-            {
-                if (player.Money >= this.Price)
-                {
-                    Console.WriteLine("Make your choice:\n1: Buy\n2: Skip");
-                    string input = Console.ReadLine();
-
-                    switch (input)
-                    {
-                        case "1": Buy(player); break;
-                        case "2": break;
-                        default: throw new ArgumentOutOfRangeException("Incorrect choice!");
-                    }
-                }
-                else 
-                {
-                    PayRent(player);
-                }
-            }
-            else
-            {
-                PayRent(player);
-            }
+            NumberOfStations = 0;
         }
 
+        public static int NumberOfStations { get; private set; }
 
-        public bool Buy(Player player)
-        {   
-            if (player.WidthdrawMoney(this.Price))
+        public override bool PayRent(Player player)
+        {
+            if (this.Owner != null && this.Owner != player) 
             {
-                this.Owner = player;
+                int numberOfStationsOfOwner = this.Owner.Properties.Count(property => property is StationTile);
+                
+                this.Owner.AddMoney(this.BaseRent*numberOfStationsOfOwner);
+                player.WidthdrawMoney(this.BaseRent*numberOfStationsOfOwner);
+
                 return true;
             }
 
-            return false;
-        }
-
-
-        public bool PayRent(Player player)
-        {
-            if (this.Owner == null)
-            {
-                return player.WidthdrawMoney(this.BaseRent);
-            }
-            else if(this.Owner != player)
-            {
-                this.Owner.AddMoney(this.BaseRent);
-                player.WidthdrawMoney(this.BaseRent);
-                //TODO:Implement advanced renting with calculation of properties
-            }
-
-            return true;
+           return base.PayRent(player);
         }
     }
 }
