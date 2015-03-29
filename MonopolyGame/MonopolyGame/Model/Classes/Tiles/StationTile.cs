@@ -41,6 +41,10 @@ namespace MonopolyGame.Model.Classes
                         default: throw new ArgumentOutOfRangeException("Incorrect choice!");
                     }
                 }
+                else 
+                {
+                    PayRent(player);
+                }
             }
             else
             {

@@ -37,7 +37,7 @@
                 {
                     int firstRoll = Dice.Roll();
                     int secondRoll = Dice.Roll();
-                    Console.WriteLine("{0} rolls dice...", gosho.Name);
+                    Console.WriteLine("{0} rolls dice...", player.Name);
                     Console.WriteLine(String.Format("first dice rolled: {0} second dice rolled: {1}", firstRoll, secondRoll));
 
                     PlayerTurn(player, board.Tiles, firstRoll, secondRoll);
