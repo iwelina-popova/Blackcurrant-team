@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model.Classes
 {
+    using Model.Delegates;
+
     public abstract class PropertyTile : Tile
     {
         public PropertyTile(string name, int price, int rent, Player owner = null) 
@@ -26,8 +28,8 @@ namespace MonopolyGame.Model.Classes
             {
                 if (player.Money >= this.Price)
                 {
-                    Console.WriteLine("Make your choice:\n1: Buy\n2: Skip");
-                    string input = Console.ReadLine();
+                    PrintingMethodInstance.Instance("Make your choice:\n1: Buy\n2: Skip");
+                    string input = ReadingMethodIntance.Instance();
 
                     switch (input)
                     {
@@ -39,7 +41,6 @@ namespace MonopolyGame.Model.Classes
                 else
                 {
                     PayRent(player);
-                    Console.WriteLine("{0} ");
                 }
             }
             else

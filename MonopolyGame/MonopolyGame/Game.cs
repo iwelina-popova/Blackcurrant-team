@@ -7,6 +7,7 @@
     using System.Threading.Tasks;
 
     using Model.Classes;
+    using Model.Delegates;
 
     class Game
     {
@@ -20,7 +21,7 @@
                 currentTile = tiles[player.Position];
                 currentTile.Action(player);
             }
-            Console.WriteLine(player);
+            PrintingMethodInstance.Instance(player);
         }
 
         static void Main(string[] args)
@@ -30,6 +31,8 @@
             Player gosho = new Player("Gosho");
             board.AddPlayer(pesho);
             board.AddPlayer(gosho);
+            PrintingMethodInstance.Instance = Console.WriteLine;
+            ReadingMethodIntance.Instance = Console.ReadLine;
 
             while (board.PlayerCount > 1)
             {
@@ -37,8 +40,8 @@
                 {
                     int firstRoll = Dice.Roll();
                     int secondRoll = Dice.Roll();
-                    Console.WriteLine("{0} rolls dice...", player.Name);
-                    Console.WriteLine(String.Format("first dice rolled: {0} second dice rolled: {1}", firstRoll, secondRoll));
+                    PrintingMethodInstance.Instance(String.Format("{0} rolls dice...", player.Name));
+                    PrintingMethodInstance.Instance(String.Format("first dice rolled: {0} second dice rolled: {1}", firstRoll, secondRoll));
 
                     PlayerTurn(player, board.Tiles, firstRoll, secondRoll);
 
@@ -47,7 +50,7 @@
                         board.RemovePlayer(player);
                         if (board.PlayerCount <= 1)
                         {
-                            Console.WriteLine(String.Format("{0} Wins !", board.Players[0].Name));
+                            PrintingMethodInstance.Instance(String.Format("{0} Wins !", board.Players[0].Name));
                             break;
                         }
                     }

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model.Classes
 {
+    using Model.Delegates;
+
     public class JailTile : Tile
     {
         private const string JAIL_TILE_NAME = "Jail";
@@ -19,8 +21,8 @@ namespace MonopolyGame.Model.Classes
 
         public override void Action(Player player)
         {
-            Console.WriteLine("Make your choice:\n1: Pay tax from 50$!\n2: Try to roll doubles!");
-            string input = Console.ReadLine();
+            PrintingMethodInstance.Instance("Make your choice:\n1: Pay tax from 50$!\n2: Try to roll doubles!");
+            string input = ReadingMethodIntance.Instance();
 
             switch (input)
             {

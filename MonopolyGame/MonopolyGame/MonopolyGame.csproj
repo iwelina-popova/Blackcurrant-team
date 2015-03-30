@@ -58,6 +58,8 @@
     <Compile Include="Model\Classes\Dice.cs" />
     <Compile Include="Model\Classes\Player.cs" />
     <Compile Include="Model\Classes\Tiles\StreetTile.cs" />
+    <Compile Include="Model\Delegates\PrintingMethod.cs" />
+    <Compile Include="Model\Delegates\ReadingMethodIntance.cs" />
     <Compile Include="Model\Enumerations\StreetTileColor.cs" />
     <Compile Include="Model\Classes\Tiles\Tile.cs" />
     <Compile Include="Model\Interfaces\IBuyable.cs" />
