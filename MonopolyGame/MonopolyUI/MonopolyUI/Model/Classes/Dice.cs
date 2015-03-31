@@ -17,7 +17,6 @@ namespace MonopolyGame.Model.Classes
 
         public static int Roll()
         {
-            
             int dice = generator.Next(1, 7);
             return dice;
 

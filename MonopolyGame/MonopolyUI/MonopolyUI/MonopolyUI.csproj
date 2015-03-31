@@ -67,8 +67,7 @@
     <Compile Include="Model\Classes\Tiles\StreetTile.cs" />
     <Compile Include="Model\Classes\Tiles\TaxTile.cs" />
     <Compile Include="Model\Classes\Tiles\Tile.cs" />
-    <Compile Include="Model\Delegates\PrintingMethod.cs" />
-    <Compile Include="Model\Delegates\ReadingMethodIntance.cs" />
+    <Compile Include="Model\Delegates\Delegates.cs" />
     <Compile Include="Model\Enumerations\StreetTileColor.cs" />
     <Compile Include="Model\Interfaces\IBuyable.cs" />
     <Compile Include="Monopoly.cs">

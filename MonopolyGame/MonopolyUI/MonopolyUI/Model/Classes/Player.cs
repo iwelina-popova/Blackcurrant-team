@@ -18,7 +18,7 @@ namespace MonopolyGame.Model.Classes
             this.Properties = new List<PropertyTile>();
         }
 
-        public string Name { get; set; }
+        public string Name { get; private set; }
         public int Position { get; private set; }
         public int Money { get; private set; }
         public bool CanMove { get; set; }

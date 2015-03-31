@@ -28,8 +28,8 @@ namespace MonopolyGame.Model.Classes
             {
                 if (player.Money >= this.Price)
                 {
-                    PrintingMethodInstance.Instance("Make your choice:\n1: Buy\n2: Skip");
-                    string input = ReadingMethodIntance.Instance();
+                    Delegates.PrintingMethodInstance("Make your choice:\n1: Buy\n2: Skip");
+                    string input = Delegates.ReadingMethodIntance();
 
                     switch (input)
                     {
