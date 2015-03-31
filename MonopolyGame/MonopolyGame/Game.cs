@@ -9,7 +9,6 @@
     using Model.Classes;
     using Model.Delegates;
 
-    // Test 11111111111111111111111111111
     class Game
     {
         public static void PlayerTurn(Player player, Tile[] tiles, int firstRoll, int secondRoll)
@@ -22,7 +21,7 @@
                 currentTile = tiles[player.Position];
                 currentTile.Action(player);
             }
-            PrintingMethodInstance.Instance(player);
+            Delegates.PrintingMethodInstance(player);
         }
 
         static void Main(string[] args)
@@ -32,8 +31,8 @@
             Player gosho = new Player("Gosho");
             board.AddPlayer(pesho);
             board.AddPlayer(gosho);
-            PrintingMethodInstance.Instance = Console.WriteLine;
-            ReadingMethodIntance.Instance = Console.ReadLine;
+            Delegates.PrintingMethodInstance = Console.WriteLine;
+            Delegates.ReadingMethodIntance = Console.ReadLine;
 
             while (board.PlayerCount > 1)
             {
@@ -41,8 +40,8 @@
                 {
                     int firstRoll = Dice.Roll();
                     int secondRoll = Dice.Roll();
-                    PrintingMethodInstance.Instance(String.Format("{0} rolls dice...", player.Name));
-                    PrintingMethodInstance.Instance(String.Format("first dice rolled: {0} second dice rolled: {1}", firstRoll, secondRoll));
+                    Delegates.PrintingMethodInstance(String.Format("{0} rolls dice...", player.Name));
+                    Delegates.PrintingMethodInstance(String.Format("first dice rolled: {0} second dice rolled: {1}", firstRoll, secondRoll));
 
                     PlayerTurn(player, board.Tiles, firstRoll, secondRoll);
 
@@ -51,14 +50,14 @@
                         board.RemovePlayer(player);
                         if (board.PlayerCount <= 1)
                         {
-                            PrintingMethodInstance.Instance(String.Format("{0} Wins !", board.Players[0].Name));
+                            Delegates.PrintingMethodInstance(String.Format("{0} Wins !", board.Players[0].Name));
                             break;
                         }
                     }
                 }
             }
 
-            Console.WriteLine("Game over");
+            Delegates.PrintingMethodInstance("Game over");
         }
     }
 }

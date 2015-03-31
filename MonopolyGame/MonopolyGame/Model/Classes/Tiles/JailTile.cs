@@ -21,8 +21,8 @@ namespace MonopolyGame.Model.Classes
 
         public override void Action(Player player)
         {
-            PrintingMethodInstance.Instance("Make your choice:\n1: Pay tax from 50$!\n2: Try to roll doubles!");
-            string input = ReadingMethodIntance.Instance();
+            Delegates.PrintingMethodInstance("Make your choice:\n1: Pay tax from 50$!\n2: Try to roll doubles!");
+            string input = Delegates.ReadingMethodIntance();
 
             switch (input)
             {
