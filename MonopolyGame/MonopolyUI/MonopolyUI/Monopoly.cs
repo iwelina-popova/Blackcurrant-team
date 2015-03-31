@@ -260,7 +260,7 @@ namespace MonopolyUI
         {
             if (board.Players.Count <= 1)
             {
-
+                //END GAME LOGIC
             }
 
             currentPlayerIndex++;
@@ -299,6 +299,14 @@ namespace MonopolyUI
             int moves = dice1 + dice2;
             bool Pair = dice1 == dice2;
             label23.Text = string.Format("{0} + {1} = {2}", dice1.ToString(), dice2.ToString(), moves.ToString());
+
+            PlayerTurn(currentPlayer, board.Tiles, dice1, dice2);
+
+            if (currentPlayer.IsBankrupt)
+            {
+                board.RemovePlayer(currentPlayer);
+                currentPlayerIndex--;
+            }
 
             //switch (PlayerTurn)
             //{
@@ -341,7 +349,7 @@ namespace MonopolyUI
 
         private void button7_Click(object sender, EventArgs e)
         {
-            EndOfTurn3p();
+            EndOfTurn2p();
             button7.Hide();
         }
         #endregion
