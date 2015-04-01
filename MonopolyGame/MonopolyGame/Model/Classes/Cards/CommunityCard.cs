@@ -11,12 +11,11 @@ namespace MonopolyGame.Model.Classes
         public CommunityCard(string description, int money)
             : base(description, money)
         {
-
         }
 
         public override void Action(Player player)
         {
-            player.WidthdrawMoney(base.Money);
+            player.AddMoney(base.Money);
         }
     }
 }

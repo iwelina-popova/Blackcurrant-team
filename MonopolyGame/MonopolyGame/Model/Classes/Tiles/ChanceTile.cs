@@ -30,9 +30,16 @@ namespace MonopolyGame.Model.Classes
 
         private static void LoadCards() 
         {
-            Cards.Enqueue(new ChanceCard("test", 200));
-            Cards.Enqueue(new ChanceCard("Description", 100));
-            Cards.Enqueue(new ChanceCard("Stuff", 150));
+            Cards.Enqueue(new ChanceCard("Destributed Dental System Attack - you lose $150", -150));
+            Cards.Enqueue(new ChanceCard("Ouch - Heartbleed - you lose $100", -100));
+            Cards.Enqueue(new ChanceCard("You used float insted of decimal - you lose $50", -50));
+            Cards.Enqueue(new ChanceCard("Your Visual Studio license expired - you lose $75", -75));
+            Cards.Enqueue(new ChanceCard("Blue Screen of Death!!! - you lose $20", -20));
+            Cards.Enqueue(new ChanceCard("A flush of inspiration - your code compiled without any errors! - you win $100", 100));
+            Cards.Enqueue(new ChanceCard("You fixed a nasty bug - you win $50", 50));
+            Cards.Enqueue(new ChanceCard("You received a Telerik Academy Ninja Certificate - you win $150", 150));
+            Cards.Enqueue(new ChanceCard("Internet Explorer has extincted! - you win $75", 75));
+            Cards.Enqueue(new ChanceCard("Intenet boost! - you win $20", 20));
         }
     }
 }

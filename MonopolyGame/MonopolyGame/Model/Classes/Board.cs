@@ -22,11 +22,12 @@ namespace MonopolyGame.Model.Classes
         }
 
         public Tile[] Tiles { get; private set; }
-       
+
         public static Board Instance
         {
-            get {
-                if (instance == null) 
+            get
+            {
+                if (instance == null)
                 {
                     instance = new Board();
                 }
