@@ -14,7 +14,7 @@ namespace MonopolyGame.Model.Classes
             : base(CHANCE_TILE_NAME)
         { }
 
-        static ChanceTile() 
+        static ChanceTile()
         {
             Cards = new Queue<ChanceCard>();
             LoadCards();
@@ -28,18 +28,24 @@ namespace MonopolyGame.Model.Classes
             currentCard.Action(player);
         }
 
-        private static void LoadCards() 
+        private static void LoadCards()
         {
-            Cards.Enqueue(new ChanceCard("Destributed Dental System Attack - you lose $150", -150));
-            Cards.Enqueue(new ChanceCard("Ouch - Heartbleed - you lose $100", -100));
-            Cards.Enqueue(new ChanceCard("You used float insted of decimal - you lose $50", -50));
-            Cards.Enqueue(new ChanceCard("Your Visual Studio license expired - you lose $75", -75));
-            Cards.Enqueue(new ChanceCard("Blue Screen of Death!!! - you lose $20", -20));
-            Cards.Enqueue(new ChanceCard("A flush of inspiration - your code compiled without any errors! - you win $100", 100));
-            Cards.Enqueue(new ChanceCard("You fixed a nasty bug - you win $50", 50));
-            Cards.Enqueue(new ChanceCard("You received a Telerik Academy Ninja Certificate - you win $150", 150));
-            Cards.Enqueue(new ChanceCard("Internet Explorer has extincted! - you win $75", 75));
-            Cards.Enqueue(new ChanceCard("Intenet boost! - you win $20", 20));
+            var CardsArr = new[]
+                {
+                 new ChanceCard("Destributed Dental System Attack - you lose $150", -150),
+                 new ChanceCard("Ouch - Heartbleed - you lose $100", -100),
+                 new ChanceCard("You used float insted of decimal - you lose $50", -50),
+                 new ChanceCard("Your Visual Studio license expired - you lose $75", -75),
+                 new ChanceCard("Blue Screen of Death!!! - you lose $20", -20),
+                 new ChanceCard("A flush of inspiration - your code compiled without any errors! - you win $100", 100),
+                 new ChanceCard("You fixed a nasty bug - you win $50", 50),
+                 new ChanceCard("You received a Telerik Academy Ninja Certificate - you win $150", 150),
+                 new ChanceCard("Internet Explorer has extincted! - you win $75", 75),
+                 new ChanceCard("Intenet boost! - you win $20", 20),
+                };
+
+            Cards = Card.Shuffle(CardsArr);
+
         }
     }
 }

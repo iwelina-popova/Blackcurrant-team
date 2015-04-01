@@ -14,7 +14,7 @@ namespace MonopolyGame.Model.Classes
             : base(COMMUNITY_TILE_NAME)
         { }
 
-        static CommunityTile() 
+        static CommunityTile()
         {
             Cards = new Queue<CommunityCard>();
             LoadCards();
@@ -30,16 +30,22 @@ namespace MonopolyGame.Model.Classes
 
         private static void LoadCards()
         {
-            Cards.Enqueue(new CommunityCard("Your HDD burnt - you lose $150", -150));
-            Cards.Enqueue(new CommunityCard("Your RAM burnt - you lose $100", -100));
-            Cards.Enqueue(new CommunityCard("You get a raise - you win $150", 150));
-            Cards.Enqueue(new CommunityCard("You receive 2GB RAM - you win $100", 100));
-            Cards.Enqueue(new CommunityCard("Your laptop computer crashed - you lose $50", -50));
-            Cards.Enqueue(new CommunityCard("You spill coffe on your keyboard - you lose $20", -20));
-            Cards.Enqueue(new CommunityCard("Your dog ate you laptop computer recharger - you lose $75", -75));
-            Cards.Enqueue(new CommunityCard("You receive a new battery for your laptop computer - you win $75", 75));
-            Cards.Enqueue(new CommunityCard("A gift! - new smartphone for you - you win $50", 50));
-            Cards.Enqueue(new CommunityCard("You have a birthday! - you win $20", 20));
+            var CardsArr = new[]
+               {
+                new CommunityCard("Your HDD burnt - you lose $150", -150),
+                new CommunityCard("Your RAM burnt - you lose $100", -100),
+                new CommunityCard("You get a raise - you win $150", 150),
+                new CommunityCard("You receive 2GB RAM - you win $100", 100),
+                new CommunityCard("Your laptop computer crashed - you lose $50", -50),
+                new CommunityCard("You spill coffe on your keyboard - you lose $20", -20),
+                new CommunityCard("Your dog ate you laptop computer recharger - you lose $75", -75),
+                new CommunityCard("You receive a new battery for your laptop computer - you win $75", 75),
+                new CommunityCard("A gift! - new smartphone for you - you win $50", 50),
+                new CommunityCard("You have a birthday! - you win $20", 20),
+               };
+
+            Cards = Card.Shuffle(CardsArr);
+
         }
     }
 }
