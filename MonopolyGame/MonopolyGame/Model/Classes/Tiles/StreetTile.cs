@@ -5,12 +5,13 @@
     using Model.Classes.Actions.Contracts;
     using Model.Classes.Tiles.Contracts;
 
-    public class StreetTile : PropertyTile,IActionable
+    public class StreetTile : PropertyTile,IChoosableAction
     {
         public StreetTile(string name, int price, int baseRent, StreetTileColor color)
             : base(name, price, baseRent)
         {
             this.Color = color;
+            this.AddAction(new StreetRentAction());
             IncrementNumberOfStreets(this.Color);
         }
 
@@ -52,21 +53,5 @@
                 case StreetTileColor.Orange: OrangeDistrictTiles++; break;
             }
         }
-
-        //public override bool PayRent(Player player)
-        //{
-        //    if (this.Owner != null && this.Owner != player) 
-        //    {
-        //        int numberOfStreetsInDistrict = this.Owner.Properties
-        //            .Count(property => property is StreetTile && ((StreetTile)property).Color == this.Color);
-
-        //        this.Owner.AddMoney(this.BaseRent * numberOfStreetsInDistrict);
-        //        player.WidthdrawMoney(this.BaseRent * numberOfStreetsInDistrict);
-
-        //        return true;
-        //    }
-
-        //    return base.PayRent(player);
-        //}
     }
 }

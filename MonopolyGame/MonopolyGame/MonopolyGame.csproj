@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Model\Classes\Actions\Contracts\BaseRentAction.cs" />
     <Compile Include="Model\Classes\Actions\Contracts\IAction.cs" />
-    <Compile Include="Model\Classes\Actions\Contracts\IActionable.cs" />
+    <Compile Include="Model\Classes\Actions\Contracts\IChoosableAction.cs" />
     <Compile Include="Model\Classes\Actions\Contracts\IBuyable.cs" />
     <Compile Include="Model\Classes\Actions\Contracts\IRentable.cs" />
     <Compile Include="Model\Classes\Actions\Contracts\ISellable.cs" />
@@ -64,7 +64,7 @@
     <Compile Include="Model\Classes\Tiles\ChanceTile.cs" />
     <Compile Include="Model\Classes\Cards\CommunityCard.cs" />
     <Compile Include="Model\Classes\Tiles\CommunityTile.cs" />
-    <Compile Include="Model\Classes\Tiles\Contracts\ActionableTile.cs" />
+    <Compile Include="Model\Classes\Tiles\Contracts\ChoosableActionTile.cs" />
     <Compile Include="Model\Classes\Tiles\GoToJailTile.cs" />
     <Compile Include="Model\Classes\Tiles\JailTile.cs" />
     <Compile Include="Model\Classes\Tiles\Contracts\PropertyTile.cs" />

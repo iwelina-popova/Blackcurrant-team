@@ -7,7 +7,7 @@
     using Model.Common.Validators;
     using Model.Classes.Tiles.Contracts;
 
-    public class TaxTile : ActionableTile,IActionable
+    public class TaxTile : ChoosableActionTile,IChoosableAction
     {
         public TaxTile(string name, int tax) 
             : base(name) 
@@ -17,15 +17,5 @@
         }
 
         public int Tax { get; private set; }
-
-        //public override void Action(Player player)
-        //{
-        //    Pay(player);
-        //}
-
-        //public bool Pay(Player player) 
-        //{
-        //    return player.WidthdrawMoney(this.Tax);
-        //}
     }
 }

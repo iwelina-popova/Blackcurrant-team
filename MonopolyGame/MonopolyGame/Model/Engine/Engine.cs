@@ -109,7 +109,7 @@
                 currentTile = tiles[player.Position];
 
                 Console.WriteLine(currentTile.Name);
-                IActionable actionTile = currentTile as IActionable;
+                IChoosableAction actionTile = currentTile as IChoosableAction;
                 if (actionTile != null) 
                 {
                     foreach (IAction action in actionTile.Actions) 

@@ -11,7 +11,7 @@ namespace MonopolyGame.Model.Classes.Tiles.Contracts
     using Model.Classes.Actions.Contracts;
     using Model.Common.Validators;
 
-    public abstract class PropertyTile : ActionableTile, IActionable
+    public abstract class PropertyTile : ChoosableActionTile, IChoosableAction
     {
         public PropertyTile(string name, int price, int rent, Player owner = null)
             : base(name)

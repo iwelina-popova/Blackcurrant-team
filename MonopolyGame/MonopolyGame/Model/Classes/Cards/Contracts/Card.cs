@@ -6,7 +6,7 @@
     using Model.Classes.Actions.Contracts;
     using Model.Common.Validators;
 
-    public abstract class Card : IActionable
+    public abstract class Card : IChoosableAction
     {
         private ICollection<IAction> actions;
 

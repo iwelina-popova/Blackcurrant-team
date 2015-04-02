@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model.Classes.Actions.Contracts
 {
-    public interface IActionable
+    public interface IChoosableAction
     {
         ICollection<IAction> Actions {get;}
 

@@ -6,11 +6,11 @@
     using Model.Classes.Actions.Contracts;
     using Model.Common.Validators;
 
-    public class ActionableTile : Tile,IActionable
+    public class ChoosableActionTile : Tile,IChoosableAction
     {
         private ICollection<IAction> actions;
 
-        public ActionableTile(string name)
+        public ChoosableActionTile(string name)
             : base(name) 
         {
             this.actions = new List<IAction>();  

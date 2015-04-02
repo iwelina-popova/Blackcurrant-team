@@ -9,10 +9,5 @@
         public StartTile()
             : base(START_TILE_NAME) 
         { }
-        
-        //public override void Action(Player player)
-        //{
-        //    player.AddMoney(200);
-        //}
     }
 }

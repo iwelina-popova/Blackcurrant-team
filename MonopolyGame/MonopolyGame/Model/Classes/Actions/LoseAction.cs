@@ -6,7 +6,7 @@
 
     class LoseAction : IAction
     {
-        public void Execute(IActionable type, Player player)
+        public void Execute(IChoosableAction type, Player player)
         {
             Card card = type as Card;
             ObjectValidator.NullObjectValidation(card, "The instance type should a be Card");

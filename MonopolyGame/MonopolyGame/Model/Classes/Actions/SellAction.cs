@@ -6,7 +6,7 @@
 
     class SellAction: IAction,ISellable
     {
-        public void Execute(IActionable type, Player player)
+        public void Execute(IChoosableAction type, Player player)
         {
             PropertyTile tile = type as PropertyTile;
             ObjectValidator.NullObjectValidation(tile, "The instance type should a be PropertyTile");

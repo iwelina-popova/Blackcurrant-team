@@ -8,6 +8,6 @@ namespace MonopolyGame.Model.Classes.Actions.Contracts
 {
     public interface IAction
     {
-        void Execute(IActionable type, Player player);
+        void Execute(IChoosableAction type, Player player);
     }
 }

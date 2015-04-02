@@ -6,7 +6,7 @@
 
     class TaxAction : IAction, ITaxable
     {
-        public void Execute(IActionable type, Player player)
+        public void Execute(IChoosableAction type, Player player)
         {
             TaxTile tile = type as TaxTile;
             ObjectValidator.NullObjectValidation(tile, "The instance type should a be TaxTile");
