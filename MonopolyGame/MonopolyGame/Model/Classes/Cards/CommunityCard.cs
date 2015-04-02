@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MonopolyGame.Model.Classes
+﻿namespace MonopolyGame.Model.Classes
 {
+    using Model.Classes.Cards.Contracts;
+    using Model.Enumerations;
+
     public class CommunityCard : Card
     {
-        public CommunityCard(string description, int money)
-            : base(description, money)
+        public CommunityCard(string description, CardType type, int money)
+            : base(description, type, money)
         {
         }
 
-        public override void Action(Player player)
-        {
-            player.AddMoney(base.Money);
-        }
+        //public override void Action(Player player)
+        //{
+        //    player.AddMoney(base.Money);
+        //}
     }
 }

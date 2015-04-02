@@ -41,27 +41,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Classes\Cards\Card.cs" />
+    <Compile Include="Model\Classes\Actions\Contracts\BaseRentAction.cs" />
+    <Compile Include="Model\Classes\Actions\Contracts\IAction.cs" />
+    <Compile Include="Model\Classes\Actions\Contracts\IActionable.cs" />
+    <Compile Include="Model\Classes\Actions\Contracts\IBuyable.cs" />
+    <Compile Include="Model\Classes\Actions\Contracts\IRentable.cs" />
+    <Compile Include="Model\Classes\Actions\Contracts\ISellable.cs" />
+    <Compile Include="Model\Classes\Actions\Contracts\ITaxable.cs" />
+    <Compile Include="Model\Classes\Actions\BuyAction.cs" />
+    <Compile Include="Model\Classes\Actions\LoseAction.cs" />
+    <Compile Include="Model\Classes\Actions\SellAction.cs" />
+    <Compile Include="Model\Classes\Actions\StationRentAction.cs" />
+    <Compile Include="Model\Classes\Actions\StreetRentAction.cs" />
+    <Compile Include="Model\Classes\Actions\TaxAction.cs" />
+    <Compile Include="Model\Classes\Actions\WinAction.cs" />
+    <Compile Include="Model\Classes\Cards\Contracts\Card.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Model\Classes\Board.cs" />
     <Compile Include="Model\Classes\Cards\ChanceCard.cs" />
+    <Compile Include="Model\Engine\Contracts\IEngine.cs" />
+    <Compile Include="Model\Engine\Engine.cs" />
     <Compile Include="Model\Classes\Tiles\ChanceTile.cs" />
     <Compile Include="Model\Classes\Cards\CommunityCard.cs" />
     <Compile Include="Model\Classes\Tiles\CommunityTile.cs" />
-    <Compile Include="Model\Classes\District.cs" />
+    <Compile Include="Model\Classes\Tiles\Contracts\ActionableTile.cs" />
     <Compile Include="Model\Classes\Tiles\GoToJailTile.cs" />
     <Compile Include="Model\Classes\Tiles\JailTile.cs" />
-    <Compile Include="Model\Classes\Tiles\PropertyTile.cs" />
+    <Compile Include="Model\Classes\Tiles\Contracts\PropertyTile.cs" />
     <Compile Include="Model\Classes\Tiles\StartTile.cs" />
     <Compile Include="Model\Classes\Tiles\StationTile.cs" />
     <Compile Include="Model\Classes\Tiles\TaxTile.cs" />
     <Compile Include="Model\Classes\Dice.cs" />
     <Compile Include="Model\Classes\Player.cs" />
     <Compile Include="Model\Classes\Tiles\StreetTile.cs" />
+    <Compile Include="Model\Common\Helpers\CardHelpers.cs" />
+    <Compile Include="Model\Common\Validators\ObjectValidator.cs" />
     <Compile Include="Model\Delegates\Delegates.cs" />
+    <Compile Include="Model\Enumerations\CardType.cs" />
     <Compile Include="Model\Enumerations\StreetTileColor.cs" />
-    <Compile Include="Model\Classes\Tiles\Tile.cs" />
-    <Compile Include="Model\Interfaces\IBuyable.cs" />
+    <Compile Include="Model\Classes\Tiles\Contracts\Tile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

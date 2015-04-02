@@ -1,31 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MonopolyGame.Model.Classes
+﻿namespace MonopolyGame.Model.Classes.Tiles
 {
-    using Interfaces;
     using Enumerations;
+    using Model.Classes.Actions;
+    using Model.Classes.Actions.Contracts;
+    using Model.Classes.Tiles.Contracts;
 
-    public class StreetTile : PropertyTile, IBuyable
+    public class StreetTile : PropertyTile,IActionable
     {
         public StreetTile(string name, int price, int baseRent, StreetTileColor color)
             : base(name, price, baseRent)
         {
             this.Color = color;
-            switch (color)
-            {
-                case StreetTileColor.Brown: BrowDistrictTiles++; break;
-                case StreetTileColor.Yellow: YellowDistricTiles++; break;
-                case StreetTileColor.DarkBlue: DarkBlueDistrictTiles++; break;
-                case StreetTileColor.LiteBlue: LiteBlueDistrictTiles++; break;
-                case StreetTileColor.Green: GreenDistrictTiles++; break;
-                case StreetTileColor.Red: RedDistrictTiles++; break;
-                case StreetTileColor.Pink: PinkDistrictTiles++; break;
-                case StreetTileColor.Orange: OrangeDistrictTiles++; break;
-            }
+            IncrementNumberOfStreets(this.Color);
         }
 
         static StreetTile()
@@ -41,6 +27,7 @@ namespace MonopolyGame.Model.Classes
         }
 
         public StreetTileColor Color { get; private set; }
+
         public static int BrowDistrictTiles { get; private set; }
         public static int YellowDistricTiles { get; private set; }
         public static int DarkBlueDistrictTiles { get; private set; }
@@ -51,20 +38,35 @@ namespace MonopolyGame.Model.Classes
         public static int OrangeDistrictTiles { get; private set; }
 
 
-        public override bool PayRent(Player player)
+        public void IncrementNumberOfStreets(StreetTileColor color) 
         {
-            if (this.Owner != null && this.Owner != player) 
+            switch (color)
             {
-                int numberOfStreetsInDistrict = this.Owner.Properties
-                    .Count(property => property is StreetTile && ((StreetTile)property).Color == this.Color);
-
-                this.Owner.AddMoney(this.BaseRent * numberOfStreetsInDistrict);
-                player.WidthdrawMoney(this.BaseRent * numberOfStreetsInDistrict);
-
-                return true;
+                case StreetTileColor.Brown: BrowDistrictTiles++; break;
+                case StreetTileColor.Yellow: YellowDistricTiles++; break;
+                case StreetTileColor.DarkBlue: DarkBlueDistrictTiles++; break;
+                case StreetTileColor.LiteBlue: LiteBlueDistrictTiles++; break;
+                case StreetTileColor.Green: GreenDistrictTiles++; break;
+                case StreetTileColor.Red: RedDistrictTiles++; break;
+                case StreetTileColor.Pink: PinkDistrictTiles++; break;
+                case StreetTileColor.Orange: OrangeDistrictTiles++; break;
             }
-
-            return base.PayRent(player);
         }
+
+        //public override bool PayRent(Player player)
+        //{
+        //    if (this.Owner != null && this.Owner != player) 
+        //    {
+        //        int numberOfStreetsInDistrict = this.Owner.Properties
+        //            .Count(property => property is StreetTile && ((StreetTile)property).Color == this.Color);
+
+        //        this.Owner.AddMoney(this.BaseRent * numberOfStreetsInDistrict);
+        //        player.WidthdrawMoney(this.BaseRent * numberOfStreetsInDistrict);
+
+        //        return true;
+        //    }
+
+        //    return base.PayRent(player);
+        //}
     }
 }
