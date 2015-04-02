@@ -30,6 +30,7 @@
         {
             IEngine engine = new Engine();
             engine.Start();
+            Console.WriteLine("Game over");
             //while (board.PlayerCount > 1)
             //{
             //    foreach (Player player in board.Players)

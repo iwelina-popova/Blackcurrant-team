@@ -86,6 +86,10 @@
                     }
                 }
 
+                if (CheckWinningCondition()) 
+                {
+                    break;
+                }
             }
         }
 
