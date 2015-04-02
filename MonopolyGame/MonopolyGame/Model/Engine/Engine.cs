@@ -112,14 +112,33 @@
                 IChoosableAction actionTile = currentTile as IChoosableAction;
                 if (actionTile != null) 
                 {
-                    foreach (IAction action in actionTile.Actions) 
+                    if (actionTile.Actions.Count > 1)
                     {
-                        action.Execute(actionTile, player);
-
-                        if (player.IsBankrupt) 
+                        Console.WriteLine("Choose Options");
+                        Console.ReadLine();
+                        foreach (IAction action in actionTile.Actions)
                         {
-                            this.players.Remove(player);
-                        }
+                            action.Execute(actionTile, player);
+
+                            if (player.IsBankrupt)
+                            {
+                                this.players.Remove(player);
+                            }
+                        }          
+                    }
+                    else 
+                    {
+                        Console.WriteLine("Continue...");
+                        Console.ReadLine();
+                        foreach (IAction action in actionTile.Actions)
+                        {
+                            action.Execute(actionTile, player);
+
+                            if (player.IsBankrupt)
+                            {
+                                this.players.Remove(player);
+                            }
+                        }          
                     }
                 }
 

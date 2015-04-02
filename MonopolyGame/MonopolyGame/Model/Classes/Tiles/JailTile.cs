@@ -3,8 +3,9 @@
     using Model.Delegates;
     using Model.Classes.Tiles.Contracts;
     using Model.Classes.Actions;
+    using Model.Classes.Actions.Contracts;
 
-    public class JailTile : TaxTile
+    public class JailTile : TaxTile,IChoosableAction
     {
         private const string JAIL_TILE_NAME = "Jail";
         private const int JAIL_TAX = 50;
