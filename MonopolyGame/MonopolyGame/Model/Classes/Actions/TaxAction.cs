@@ -1,16 +1,16 @@
 ﻿namespace MonopolyGame.Model.Classes.Actions
 {
     using Model.Classes.Actions.Contracts;
-    using Model.Common.Validators;
     using Model.Classes.Tiles;
+    using Model.Common.Validators;
 
-    class TaxAction : IAction, ITaxable
+    public class TaxAction : IAction, ITaxable
     {
         public void Execute(IChoosableAction type, Player player)
         {
             TaxTile tile = type as TaxTile;
             ObjectValidator.NullObjectValidation(tile, "The instance type should a be TaxTile");
-            PayTax(player, tile.Tax);
+            this.PayTax(player, tile.Tax);
         }
 
         public void PayTax(Player player, int amount)

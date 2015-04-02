@@ -1,9 +1,11 @@
 ﻿namespace MonopolyGame.Model.Engine.Contracts
 {
-    interface IEngine
+    public interface IEngine
     {
         void Initialize();
+
         void Start();
+
         bool CheckWinningCondition();
     }
 }

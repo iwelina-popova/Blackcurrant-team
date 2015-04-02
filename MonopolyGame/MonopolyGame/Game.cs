@@ -8,13 +8,13 @@
 
     using Model.Classes;
     using Model.Delegates;
-    using Model.Engine.Contracts;
     using Model.Engine;
+    using Model.Engine.Contracts;
 
     public class Game
     {
-        //public static void PlayerTurn(Player player, Tile[] tiles, int firstRoll, int secondRoll)
-        //{
+        // public static void PlayerTurn(Player player, Tile[] tiles, int firstRoll, int secondRoll)
+        // {
         //    Tile currentTile;
 
         //    player.Move(firstRoll + secondRoll, tiles.Length);
@@ -24,15 +24,16 @@
         //        currentTile.Action(player);
         //    }
         //    Delegates.PrintingMethodInstance(player);
-        //}
+        // }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             IEngine engine = new Engine();
             engine.Start();
             Console.WriteLine("Game over");
-            //while (board.PlayerCount > 1)
-            //{
+
+            // while (board.PlayerCount > 1)
+            // {
             //    foreach (Player player in board.Players)
             //    {
             //        int firstRoll = Dice.Roll();
@@ -52,7 +53,7 @@
             //            }
             //        }
             //    }
-            //}
+            // }
         }
     }
 }

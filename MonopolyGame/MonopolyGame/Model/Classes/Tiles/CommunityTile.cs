@@ -8,7 +8,8 @@
 
         public CommunityTile()
             : base(COMMUNITY_TILE_NAME)
-        { }
+        {
+        }
 
         //public override void Action(Player player)
         //{

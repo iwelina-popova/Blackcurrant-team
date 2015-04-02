@@ -4,7 +4,7 @@
     using Model.Classes.Tiles.Contracts;
     using Model.Common.Validators;
 
-    class SellAction: IAction,ISellable
+    public class SellAction : IAction, ISellable
     {
         public void Execute(IChoosableAction type, Player player)
         {

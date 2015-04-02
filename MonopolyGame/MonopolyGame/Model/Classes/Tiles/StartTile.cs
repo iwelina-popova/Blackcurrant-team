@@ -7,7 +7,8 @@
         private const string START_TILE_NAME = "Start";
 
         public StartTile()
-            : base(START_TILE_NAME) 
-        { }
+            : base(START_TILE_NAME)
+        {
+        }
     }
 }

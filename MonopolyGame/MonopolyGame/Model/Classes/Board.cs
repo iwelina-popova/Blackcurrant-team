@@ -16,6 +16,19 @@
             this.tiles = new List<Tile>(BOARD_SIZE);
         }
 
+        public static Board Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Board();
+                }
+
+                return instance;
+            }
+        }
+
         public IList<Tile> Tiles
         {
             get
@@ -29,21 +42,9 @@
             this.tiles.Add(tile);
         }
 
-        public void AddTileAtPosition(Tile tile, int position) 
+        public void AddTileAtPosition(Tile tile, int position)
         {
             this.tiles[position] = tile;
-        }
-
-        public static Board Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new Board();
-                }
-                return instance;
-            }
         }
     }
 }

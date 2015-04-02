@@ -11,15 +11,18 @@
             this.Name = name;
         }
 
-        public string Name {
-            get {
+        public string Name
+        {
+            get
+            {
                 return this.name;
             }
-            private set 
+
+            private set
             {
                 ObjectValidator.StringNullOrEmptyValidator(value, "The name should not me null or empty string");
                 this.name = value;
-            }          
+            }
         }
 
         //public abstract void Action(Player player);
