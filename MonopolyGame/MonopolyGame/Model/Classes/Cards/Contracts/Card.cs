@@ -3,6 +3,7 @@
     using System.Collections.Generic;
 
     using Model.Enumerations;
+    using Model.Classes.Actions;
     using Model.Classes.Actions.Contracts;
     using Model.Common.Validators;
 
@@ -16,7 +17,16 @@
             this.Type = type;
             this.Money = money;
             this.actions = new List<IAction>();
+            if (this.Type == CardType.Win) 
+            {
+                this.AddAction(new WinAction());
+            }
+            else if (this.Type == CardType.Lose) 
+            {
+                this.AddAction(new LoseAction());
+            }
         }
+
         public int Money { get; set; }
 
         public string Description { get; private set; }

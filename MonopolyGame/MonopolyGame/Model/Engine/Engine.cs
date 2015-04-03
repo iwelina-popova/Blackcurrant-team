@@ -1,6 +1,7 @@
 ﻿namespace MonopolyGame.Model.Engine
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
 
     using Model.Common.Helpers;
@@ -18,8 +19,8 @@
     {
         private Board board;
         private ICollection<Player> players;
-        private IEnumerable<ChanceCard> chanceCards;
-        private IEnumerable<CommunityCard> communityCards;
+        private Queue<ChanceCard> chanceCards;
+        private Queue<CommunityCard> communityCards;
         private Dice firstDice;
         private Dice secondDice;
         private static Random r = new Random();
@@ -86,7 +87,7 @@
                     }
                 }
 
-                if (CheckWinningCondition()) 
+                if (CheckWinningCondition())
                 {
                     break;
                 }
@@ -110,40 +111,64 @@
 
                 Console.WriteLine(currentTile.Name);
                 IChoosableAction actionTile = currentTile as IChoosableAction;
-                if (actionTile != null) 
+                if (actionTile != null)
                 {
-                    if (actionTile.Actions.Count > 1)
-                    {
-                        Console.WriteLine("Choose Options");
-                        Console.ReadLine();
-                        foreach (IAction action in actionTile.Actions)
-                        {
-                            action.Execute(actionTile, player);
-
-                            if (player.IsBankrupt)
-                            {
-                                this.players.Remove(player);
-                            }
-                        }          
-                    }
-                    else 
-                    {
-                        Console.WriteLine("Continue...");
-                        Console.ReadLine();
-                        foreach (IAction action in actionTile.Actions)
-                        {
-                            action.Execute(actionTile, player);
-
-                            if (player.IsBankrupt)
-                            {
-                                this.players.Remove(player);
-                            }
-                        }          
-                    }
+                    this.ExecuteActionFromTile(actionTile, player);
                 }
 
+                if (currentTile is CommunityTile)
+                {
+                    CommunityCard card = CardHelpers.DrawCard(this.communityCards);
+
+                    Console.WriteLine(card.Description);
+                    Console.WriteLine("Choose Options");
+                    Console.ReadLine();
+
+                    card.Actions.First().Execute(card, player);
+
+                }
+                else if (currentTile is ChanceTile)
+                {
+                    ChanceCard card = CardHelpers.DrawCard(this.chanceCards);
+
+                    Console.WriteLine(card.Description);
+                    Console.WriteLine("Continue...");
+                    Console.ReadLine();
+
+                    card.Actions.First().Execute(card, player);
+                }
             }
             Console.WriteLine(player);
+        }
+
+        private void ExecuteActionFromTile(IChoosableAction tile, Player player)
+        {
+            if (tile.Actions.Count > 1)
+            {
+                Console.WriteLine("Continue");
+                Console.ReadLine();
+                foreach (IAction action in tile.Actions)
+                {
+                    action.Execute(tile, player);
+
+                    if (player.IsBankrupt)
+                    {
+                        this.players.Remove(player);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Continue...");
+                Console.ReadLine();
+
+                tile.Actions.First().Execute(tile, player);
+
+                if (player.IsBankrupt)
+                {
+                    this.players.Remove(player);
+                }
+            }
         }
 
         private void LoadTiles()
