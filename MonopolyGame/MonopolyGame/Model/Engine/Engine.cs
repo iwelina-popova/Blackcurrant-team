@@ -104,44 +104,42 @@
         {
             Tile currentTile;
 
-            MovePlayer(player, firstDice, secondDice, board);
-            if (tiles[player.Position] != null)
+            this.MovePlayer(player, firstDice, secondDice, board);
+            currentTile = tiles[player.Position];
+
+            Console.WriteLine(currentTile.Name);
+            IChoosableAction actionTile = currentTile as IChoosableAction;
+            if (actionTile != null)
             {
-                currentTile = tiles[player.Position];
-
-                Console.WriteLine(currentTile.Name);
-                IChoosableAction actionTile = currentTile as IChoosableAction;
-                if (actionTile != null)
-                {
-                    this.ExecuteActionFromTile(actionTile, player);
-                }
-
-                if (currentTile is CommunityTile)
-                {
-                    CommunityCard card = CardHelpers.DrawCard(this.communityCards);
-
-                    Console.WriteLine(card.Description);
-                    Console.WriteLine("Choose Options");
-                    Console.ReadLine();
-
-                    card.Actions.First().Execute(card, player);
-
-                }
-                else if (currentTile is ChanceTile)
-                {
-                    ChanceCard card = CardHelpers.DrawCard(this.chanceCards);
-
-                    Console.WriteLine(card.Description);
-                    Console.WriteLine("Continue...");
-                    Console.ReadLine();
-
-                    card.Actions.First().Execute(card, player);
-                }
+                this.ExecuteActionFromTile(actionTile, player);
             }
+
+            if (currentTile is CommunityTile)
+            {
+                CommunityCard card = CardHelpers.DrawCard(this.communityCards);
+
+                Console.WriteLine(card.Description);
+                Console.WriteLine("Choose Options");
+                Console.ReadLine();
+
+                card.Actions.First().Execute(card, player);
+
+            }
+            else if (currentTile is ChanceTile)
+            {
+                ChanceCard card = CardHelpers.DrawCard(this.chanceCards);
+
+                Console.WriteLine(card.Description);
+                Console.WriteLine("Continue...");
+                Console.ReadLine();
+
+                card.Actions.First().Execute(card, player);
+            }
+
             Console.WriteLine(player);
         }
 
-        private void MovePlayer(Player player, Dice firstDice, Dice secondDice, Board board) 
+        private void MovePlayer(Player player, Dice firstDice, Dice secondDice, Board board)
         {
             int spaces = firstDice.Roll() + secondDice.Roll();
 
