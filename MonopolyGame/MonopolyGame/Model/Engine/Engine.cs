@@ -379,7 +379,7 @@
         {
             for (int i = 0; i < 70; i++)
             {
-                if (i < 12)
+                if (i < 7)
                 {
                     Console.SetCursorPosition(0, i);
                     Console.WriteLine(new string(' ', 49));
