@@ -58,11 +58,11 @@
 
         public void AddMoney(int amount)
         {
-           
-                if (this.IsBankrupt)
-                    throw new PlayerBankruptException(this.Name);
-
-                this.Money += amount;
+            if (this.IsBankrupt)
+            {
+                throw new PlayerBankruptException(this.Name);
+            }
+            this.Money += amount;
 
         }
 
