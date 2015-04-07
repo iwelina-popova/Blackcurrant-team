@@ -93,11 +93,12 @@
                 foreach (Player player in this.players)
                 {
                     Console.WriteLine();
+                    
+                    RenderPlayersStats(player);
+                    this.PlayerTurn(player, board, firstDice.Roll(), secondDice.Roll());                    
+                    ClearConsole();
                     ClearPositionAndMoneyInfo();
                     StatusPlayer(firstPlayer, secondPlayer);
-                    RenderPlayersStats(player);
-                    this.PlayerTurn(player, board, firstDice.Roll(), secondDice.Roll());     
-                    ClearConsole();
                     if (this.CheckWinningCondition())
                     {
                         break;
@@ -364,10 +365,7 @@
         {
 
             Console.SetCursorPosition(5, 5);//Console.SetCursorPosition(5, 3 + playersCount);
-            Console.WriteLine("Current Player <<<{0}>>>", currentPlayer.Name);
-            Console.SetCursorPosition(5, 7);// Console.SetCursorPosition(5, 5 + playersCount)
-            Console.WriteLine("Position <<<{0}>>>",currentPlayer.Position);
-            Console.WriteLine();
+            Console.WriteLine("Current Player: {0}", currentPlayer.Name);
             Console.SetCursorPosition(0, 13);
 
         }
