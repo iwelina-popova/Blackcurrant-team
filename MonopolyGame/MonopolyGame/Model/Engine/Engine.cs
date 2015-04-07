@@ -93,12 +93,15 @@
                 foreach (Player player in this.players)
                 {
                     Console.WriteLine();
-                    
-                    RenderPlayersStats(player);
-                    this.PlayerTurn(player, board, firstDice.Roll(), secondDice.Roll());                    
                     ClearConsole();
+                    RenderPlayersStats(player);
+
+                    this.PlayerTurn(player, board, firstDice.Roll(), secondDice.Roll());
+                   // ClearConsole();
                     ClearPositionAndMoneyInfo();
                     StatusPlayer(firstPlayer, secondPlayer);
+                   // Console.ReadLine();
+                  
                     if (this.CheckWinningCondition())
                     {
                         break;
@@ -363,56 +366,67 @@
         }
         private void RenderPlayersStats(Player currentPlayer) //int playersCount , Player anotherPlayer
         {
-
-            Console.SetCursorPosition(5, 5);//Console.SetCursorPosition(5, 3 + playersCount);
-            Console.WriteLine("Current Player: {0}", currentPlayer.Name);
-            Console.SetCursorPosition(0, 13);
+            Console.SetCursorPosition(5, 0);//Console.SetCursorPosition(5, 3 + playersCount);
+            Console.WriteLine("Current Player: << {0} >>", currentPlayer.Name);
+            Console.SetCursorPosition(5, 2);
+            Console.WriteLine("Position: << {0} >>", currentPlayer.Position);
+            Console.SetCursorPosition(5, 4);
+            Console.WriteLine("Money: << {0} >>", currentPlayer.Money);
+            Console.SetCursorPosition(0, 8);      
 
         }
         private void ClearConsole()
         {
-            for (int i = 8; i < 70; i++)
+            for (int i = 0; i < 70; i++)
             {
-                Console.SetCursorPosition(0, i);
-                Console.WriteLine(new string(' ', 33));
+                if (i < 12)
+                {
+                    Console.SetCursorPosition(0, i);
+                    Console.WriteLine(new string(' ', 49));
+                }
+                else
+                {
+                    Console.SetCursorPosition(0, i);
+                    Console.WriteLine(new string(' ', 80));
+                }
             }
 
         }
         private void StatusPlayer(Player firstPlayer, Player secondPlayer)
         {
-            Console.SetCursorPosition(50, 5);
+            Console.SetCursorPosition(50, 0);
             Console.WriteLine("Name: {0}", firstPlayer.Name);
-            Console.SetCursorPosition(50, 6);
+            Console.SetCursorPosition(50, 1);
             Console.WriteLine("Position: {0}", firstPlayer.Position);
-            Console.SetCursorPosition(50, 7);
+            Console.SetCursorPosition(50, 2);
             Console.WriteLine("Money: {0}", firstPlayer.Money);
-            Console.SetCursorPosition(50, 8);
+            Console.SetCursorPosition(50, 3);
 
             Console.WriteLine(new string('-',10));
 
-            Console.SetCursorPosition(50, 9);
+            Console.SetCursorPosition(50, 4);
             Console.WriteLine("Name: {0}", secondPlayer.Name);
-            Console.SetCursorPosition(50, 10);
+            Console.SetCursorPosition(50, 5);
             Console.WriteLine("Position: {0}", secondPlayer.Position);
-            Console.SetCursorPosition(50, 11);
+            Console.SetCursorPosition(50, 6);
             Console.WriteLine("Money: {0}", secondPlayer.Money);
         }
         private void ClearPositionAndMoneyInfo()
         {
             
-            Console.SetCursorPosition(50, 6);
+            Console.SetCursorPosition(50, 1);
             Console.WriteLine(new string(' ',13));
-            Console.SetCursorPosition(50, 7);
+            Console.SetCursorPosition(50, 2);
             Console.WriteLine(new string(' ',11));
           
          //   Console.WriteLine(new string('-', 10));
 
-            Console.SetCursorPosition(50, 10);
+            Console.SetCursorPosition(50, 5);
             Console.WriteLine(new string(' ', 13));
-            Console.SetCursorPosition(50, 11);
+            Console.SetCursorPosition(50, 6);
             Console.WriteLine(new string(' ', 11));
         }
-
+        
 
     }
 }
