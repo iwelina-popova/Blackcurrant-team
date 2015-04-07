@@ -1,29 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MonopolyGame.Model.Classes
+﻿namespace MonopolyGame.Model.Classes.Tiles
 {
-    public class TaxTile : Tile
+    using System.Collections.Generic;
+
+    using Model.Classes.Actions;
+    using Model.Classes.Actions.Contracts;
+    using Model.Classes.Tiles.Contracts;
+    using Model.Common.Validators;
+
+    public class TaxTile : ChoosableActionTile, IChoosableAction
     {
-        public TaxTile(String name, int tax) 
-            : base(name) 
+        public TaxTile(string name, int x, int y, int tax)
+            : base(name, x, y)
         {
             this.Tax = tax;
+            this.AddAction(new TaxAction());
         }
 
         public int Tax { get; private set; }
-
-        public override void Action(Player player)
-        {
-            Pay(player);
-        }
-
-        public bool Pay(Player player) 
-        {
-            return player.WidthdrawMoney(this.Tax);
-        }
     }
 }

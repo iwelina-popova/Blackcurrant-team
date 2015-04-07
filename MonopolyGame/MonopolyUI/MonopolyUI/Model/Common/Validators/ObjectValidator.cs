@@ -1,8 +1,6 @@
 ﻿namespace MonopolyGame.Model.Common.Validators
 {
     using System;
-    
-    
 
     public static class ObjectValidator
     {
@@ -21,6 +19,5 @@
                 throw new ArgumentException(message);
             }
         }
-
     }
 }
