@@ -2,10 +2,12 @@
 {
     using System.Collections.Generic;
     using System.Text;
+    using System;
 
     using Model.Common.Validators;
     using Model.Classes.Cards.Contracts;
     using Model.Classes.Tiles.Contracts;
+    
 
     public class Player
     {
@@ -53,30 +55,33 @@
             this.Position = position;
         }
 
-        public bool AddMoney(int amount)
+        public void AddMoney(int amount)
         {
-            if (!this.IsBankrupt)
-            {
-                this.Money += amount;
-            }
+           
+                if (this.IsBankrupt)
+                    throw new ArgumentException ("Player is Bankrupt!");
 
-            return !this.IsBankrupt;
+                this.Money += amount;
+
         }
 
-        public bool WidthdrawMoney(int amount)
+        public void WidthdrawMoney(int amount)
         {
-            if (!this.IsBankrupt)
-            {
+             if (this.IsBankrupt)
+                    throw new ArgumentException ("Player is Bankrupt!");
+                 
+             if(this.Money < amount)
+                 throw new ArgumentException("Player do not have the money!");
+
                 this.Money -= amount;
 
                 if (this.Money < 0)
                 {
                     this.IsBankrupt = true;
                 }
-            }
+          }
 
-            return !this.IsBankrupt;
-        } 
+        
 
         public override string ToString()
         {
