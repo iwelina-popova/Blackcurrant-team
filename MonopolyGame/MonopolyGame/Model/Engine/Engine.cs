@@ -26,6 +26,7 @@
         private Dice firstDice;
         private Dice secondDice;
         private static Random r = new Random();
+        private static ConsoleColor defaultColor = ConsoleColor.Green;
 
         public Engine()
         {
@@ -65,6 +66,7 @@
 
         public void Start()
         {
+            SetDefaultForegroundColor();
             Console.WriteLine("Select number of players: ");
             int number = int.Parse(Console.ReadLine());
             if (number < 2)
@@ -82,9 +84,10 @@
             {
                 foreach (Player player in this.players)
                 {
-                    Console.WriteLine();
-                    Console.WriteLine(player);
+                    Console.WriteLine();                  
+                    RenderPlayersStats(player);
                     this.PlayerTurn(player, board, firstDice.Roll(), secondDice.Roll());
+                    ClearConsole();
                     if (this.CheckWinningCondition())
                     {
                         break;
@@ -95,6 +98,7 @@
                 {
                     break;
                 }
+
             }
         }
 
@@ -341,5 +345,31 @@
 
             return CardHelpers.ShuffleCards(CardsArr);
         }
+
+        private static void SetDefaultForegroundColor()
+        {
+            Console.ForegroundColor = defaultColor;
+        }
+        private void RenderPlayersStats(Player currentPlayer)
+        {
+            
+            Console.SetCursorPosition(5,5);
+            Console.WriteLine("Current Player <<<{0}>>>", currentPlayer.Name);
+            Console.SetCursorPosition(5, 7);
+            Console.WriteLine("Position <<<{0}>>>",currentPlayer.Position);
+            Console.WriteLine();
+
+        }
+        private void ClearConsole()
+        {
+            for (int i = 8; i < 20; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.WriteLine(new string(' ', 101));
+            }
+
+        }
+
+
     }
 }
