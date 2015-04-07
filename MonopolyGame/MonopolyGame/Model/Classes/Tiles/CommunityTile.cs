@@ -11,10 +11,5 @@
         {
         }
 
-        //public override void Action(Player player)
-        //{
-        //    CommunityCard currentCard = player.DrawCard(Cards);
-        //    currentCard.Action(player);
-        //}
     }
 }

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Text;
     using System.Collections.Generic;
 
     using Model.Common.Helpers;
@@ -80,6 +81,7 @@
             {
                 foreach (Player player in this.players)
                 {
+                    Console.WriteLine(player);
                     this.PlayerTurn(player, board, firstDice.Roll(), secondDice.Roll());
                     if (this.CheckWinningCondition())
                     {
@@ -107,7 +109,7 @@
             this.MovePlayer(player, firstDice, secondDice, board);
             currentTile = board.GetTileAtPosition(player.Position);
 
-            Console.WriteLine("Current tile name: {0}",currentTile.Name);
+            Console.WriteLine("Current tile name: {0}", currentTile.Name);
             IChoosableAction actionTile = currentTile as IChoosableAction;
             if (actionTile != null)
             {
@@ -119,7 +121,7 @@
                 CommunityCard card = CardHelpers.DrawCard(this.communityCards);
 
                 Console.WriteLine("Community Card");
-                Console.WriteLine("Card Desciption: {0}",card.Description);               
+                Console.WriteLine("Card Desciption: {0}", card.Description);
                 Console.ReadLine();
 
                 this.ExecuteActionFromCard(card, player);
@@ -129,13 +131,11 @@
                 ChanceCard card = CardHelpers.DrawCard(this.chanceCards);
 
                 Console.WriteLine("Chance Card");
-                Console.WriteLine("Card Desciption: {0}", card.Description); 
+                Console.WriteLine("Card Desciption: {0}", card.Description);
                 Console.ReadLine();
 
                 this.ExecuteActionFromCard(card, player);
             }
-
-            Console.WriteLine(player);
         }
 
         private void MovePlayer(Player player, Dice firstDice, Dice secondDice, Board board)
@@ -152,7 +152,7 @@
             player.Move(newPosition);
         }
 
-        private void ExecuteActionFromCard(Card card, Player player) 
+        private void ExecuteActionFromCard(Card card, Player player)
         {
             card.Actions.First().Execute(card, player);
         }
@@ -162,15 +162,15 @@
             if (tile.Actions.Count > 1)
             {
                 Console.WriteLine("Choose Action");
-                Console.ReadLine();
-                foreach (IAction action in tile.Actions)
-                {
-                    action.Execute(tile, player);
+                Console.WriteLine(this.AvailableActionsToString(tile.Actions));
+                string actionString = Console.ReadLine();
 
-                    if (player.IsBankrupt)
-                    {
-                        this.players.Remove(player);
-                    }
+                IAction chosenAction = this.ChooseAction(tile.Actions, actionString);
+                chosenAction.Execute(tile, player);
+
+                if (player.IsBankrupt)
+                {
+                    this.players.Remove(player);
                 }
             }
             else
@@ -185,6 +185,31 @@
                     this.players.Remove(player);
                 }
             }
+        }
+
+        private IAction ChooseAction(ICollection<IAction> availableActions, string actionString)
+        {
+            switch (actionString)
+            {
+                case "buy": return availableActions.First(action => action is IBuyable);
+                case "payrent": return availableActions.First(action => action is IRentable);
+                case "sell": return availableActions.First(action => action is ISellable);
+                case "tax": return availableActions.First(action => action is ITaxable);
+                default:
+                    throw new ArgumentException("Invalid action");
+            }
+        }
+
+        private string AvailableActionsToString(IEnumerable<IAction> availableActions) 
+        {
+            StringBuilder result = new StringBuilder();
+            result.AppendLine("Available actions: ");
+            foreach(IAction action in availableActions)
+            {
+                result.AppendLine(action.GetType().Name);
+            }
+
+            return result.ToString();
         }
 
         private void LoadTiles()

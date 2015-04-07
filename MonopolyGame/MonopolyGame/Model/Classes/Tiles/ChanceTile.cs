@@ -10,11 +10,5 @@
             : base(CHANCE_TILE_NAME)
         {
         }
-
-        //public override void Action(Player player)
-        //{
-        //    ChanceCard currentCard = player.DrawCard(Cards);
-        //    currentCard.Action(player);
-        //}
     }
 }
