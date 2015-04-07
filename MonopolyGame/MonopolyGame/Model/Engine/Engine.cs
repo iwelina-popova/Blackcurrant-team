@@ -194,7 +194,7 @@
                 case "buy": return availableActions.First(action => action is IBuyable);
                 case "payrent": return availableActions.First(action => action is IRentable);
                 case "sell": return availableActions.First(action => action is ISellable);
-                case "tax": return availableActions.First(action => action is ITaxable);
+                case "paytax": return availableActions.First(action => action is ITaxable);
                 default:
                     throw new ArgumentException("Invalid action");
             }
@@ -204,11 +204,25 @@
         {
             StringBuilder result = new StringBuilder();
             result.AppendLine("Available actions: ");
-            foreach(IAction action in availableActions)
+            foreach (IAction action in availableActions)
             {
-                result.AppendLine(action.GetType().Name);
+                if (action is IBuyable)
+                {
+                    result.AppendLine("buy");
+                }
+                else if (action is ISellable)
+                {
+                    result.AppendLine("sell");
+                }
+                else if (action is IRentable)
+                {
+                    result.AppendLine("payrent");
+                }
+                else if (action is ITaxable)
+                {
+                    result.AppendLine("paytax");
+                }
             }
-
             return result.ToString();
         }
 
