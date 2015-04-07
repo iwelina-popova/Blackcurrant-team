@@ -105,9 +105,9 @@
             Tile currentTile;
 
             this.MovePlayer(player, firstDice, secondDice, board);
-            currentTile = tiles[player.Position];
+            currentTile = board.GetTileAtPosition(player.Position);
 
-            Console.WriteLine(currentTile.Name);
+            Console.WriteLine("Current tile name: {0}",currentTile.Name);
             IChoosableAction actionTile = currentTile as IChoosableAction;
             if (actionTile != null)
             {
@@ -118,22 +118,21 @@
             {
                 CommunityCard card = CardHelpers.DrawCard(this.communityCards);
 
-                Console.WriteLine(card.Description);
-                Console.WriteLine("Choose Options");
+                Console.WriteLine("Community Card");
+                Console.WriteLine("Card Desciption: {0}",card.Description);               
                 Console.ReadLine();
 
-                card.Actions.First().Execute(card, player);
-
+                this.ExecuteActionFromCard(card, player);
             }
             else if (currentTile is ChanceTile)
             {
                 ChanceCard card = CardHelpers.DrawCard(this.chanceCards);
 
-                Console.WriteLine(card.Description);
-                Console.WriteLine("Continue...");
+                Console.WriteLine("Chance Card");
+                Console.WriteLine("Card Desciption: {0}", card.Description); 
                 Console.ReadLine();
 
-                card.Actions.First().Execute(card, player);
+                this.ExecuteActionFromCard(card, player);
             }
 
             Console.WriteLine(player);
@@ -151,6 +150,11 @@
                 player.AddMoney(200);
             }
             player.Move(newPosition);
+        }
+
+        private void ExecuteActionFromCard(Card card, Player player) 
+        {
+            card.Actions.First().Execute(card, player);
         }
 
         private void ExecuteActionFromTile(IChoosableAction tile, Player player)
