@@ -15,7 +15,6 @@
     using Model.Classes.Cards.Contracts;
     using Model.Classes;
     using Model.Classes.Actions.Contracts;
-    using MonopolyGame.Model.Common.CustomExceptions;
 
     public class Engine : IEngine
     {
@@ -66,27 +65,38 @@
 
         public void Start()
         {
+             
             SetDefaultForegroundColor();
-            Console.WriteLine("Select number of players: ");
-            int number = int.Parse(Console.ReadLine());
-            if (number < 2)
-            {
-                throw new MonopolyArgumentException("Atleast two players should play the game");
-            }
+          //  Console.WriteLine("Select number of players: ");
+          //  int number = int.Parse(Console.ReadLine());
+          //  if (number < 2)
+          //  {
+         //       throw new ArgumentException("Atleast two players should play the game");
+         //   }
+            Console.Write("Player 1 name:");
+            Player firstPlayer = new Player(Console.ReadLine());
+            Console.Write("Player 2 name:");
+            Player secondPlayer = new Player(Console.ReadLine());
+            this.AddPlayer(firstPlayer);
+            this.AddPlayer(secondPlayer);
+         //   StatusPlayer(firstPlayer, secondPlayer);
+        //   for (int i = 0; i < number; i++)
+        //    {
+        //        Console.Write("Player name:");
+        //        this.AddPlayer(new Player(Console.ReadLine()));
 
-            for (int i = 0; i < number; i++)
-            {
-                Console.Write("Player name:");
-                this.AddPlayer(new Player(Console.ReadLine()));
-            }
+        //    }
 
+            
             while (true)
             {
                 foreach (Player player in this.players)
                 {
-                    Console.WriteLine();                  
+                    Console.WriteLine();
+                    ClearPositionAndMoneyInfo();
+                    StatusPlayer(firstPlayer, secondPlayer);
                     RenderPlayersStats(player);
-                    this.PlayerTurn(player, board, firstDice.Roll(), secondDice.Roll());
+                    this.PlayerTurn(player, board, firstDice.Roll(), secondDice.Roll());     
                     ClearConsole();
                     if (this.CheckWinningCondition())
                     {
@@ -208,7 +218,7 @@
                 case "sell": return availableActions.First(action => action is ISellable);
                 case "paytax": return availableActions.First(action => action is ITaxable);
                 default:
-                    throw new MonopolyArgumentException("Invalid action");
+                    throw new ArgumentException("Invalid action");
             }
         }
 
@@ -350,24 +360,59 @@
         {
             Console.ForegroundColor = defaultColor;
         }
-        private void RenderPlayersStats(Player currentPlayer)
+        private void RenderPlayersStats(Player currentPlayer) //int playersCount , Player anotherPlayer
         {
-            
-            Console.SetCursorPosition(5,5);
+
+            Console.SetCursorPosition(5, 5);//Console.SetCursorPosition(5, 3 + playersCount);
             Console.WriteLine("Current Player <<<{0}>>>", currentPlayer.Name);
-            Console.SetCursorPosition(5, 7);
+            Console.SetCursorPosition(5, 7);// Console.SetCursorPosition(5, 5 + playersCount)
             Console.WriteLine("Position <<<{0}>>>",currentPlayer.Position);
             Console.WriteLine();
+            Console.SetCursorPosition(0, 13);
 
         }
         private void ClearConsole()
         {
-            for (int i = 8; i < 20; i++)
+            for (int i = 8; i < 70; i++)
             {
                 Console.SetCursorPosition(0, i);
-                Console.WriteLine(new string(' ', 101));
+                Console.WriteLine(new string(' ', 33));
             }
 
+        }
+        private void StatusPlayer(Player firstPlayer, Player secondPlayer)
+        {
+            Console.SetCursorPosition(50, 5);
+            Console.WriteLine("Name: {0}", firstPlayer.Name);
+            Console.SetCursorPosition(50, 6);
+            Console.WriteLine("Position: {0}", firstPlayer.Position);
+            Console.SetCursorPosition(50, 7);
+            Console.WriteLine("Money: {0}", firstPlayer.Money);
+            Console.SetCursorPosition(50, 8);
+
+            Console.WriteLine(new string('-',10));
+
+            Console.SetCursorPosition(50, 9);
+            Console.WriteLine("Name: {0}", secondPlayer.Name);
+            Console.SetCursorPosition(50, 10);
+            Console.WriteLine("Position: {0}", secondPlayer.Position);
+            Console.SetCursorPosition(50, 11);
+            Console.WriteLine("Money: {0}", secondPlayer.Money);
+        }
+        private void ClearPositionAndMoneyInfo()
+        {
+            
+            Console.SetCursorPosition(50, 6);
+            Console.WriteLine(new string(' ',13));
+            Console.SetCursorPosition(50, 7);
+            Console.WriteLine(new string(' ',11));
+          
+         //   Console.WriteLine(new string('-', 10));
+
+            Console.SetCursorPosition(50, 10);
+            Console.WriteLine(new string(' ', 13));
+            Console.SetCursorPosition(50, 11);
+            Console.WriteLine(new string(' ', 11));
         }
 
 
