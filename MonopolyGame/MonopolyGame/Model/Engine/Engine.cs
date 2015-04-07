@@ -15,6 +15,7 @@
     using Model.Classes.Cards.Contracts;
     using Model.Classes;
     using Model.Classes.Actions.Contracts;
+    using MonopolyGame.Model.Common.CustomExceptions;
 
     public class Engine : IEngine
     {
@@ -68,7 +69,7 @@
             int number = int.Parse(Console.ReadLine());
             if (number < 2)
             {
-                throw new ArgumentException("Atleast two players should play the game");
+                throw new MonopolyArgumentException("Atleast two players should play the game");
             }
 
             for (int i = 0; i < number; i++)
@@ -203,7 +204,7 @@
                 case "sell": return availableActions.First(action => action is ISellable);
                 case "paytax": return availableActions.First(action => action is ITaxable);
                 default:
-                    throw new ArgumentException("Invalid action");
+                    throw new MonopolyArgumentException("Invalid action");
             }
         }
 

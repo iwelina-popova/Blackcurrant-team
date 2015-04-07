@@ -7,6 +7,7 @@
     using Model.Common.Validators;
     using Model.Classes.Cards.Contracts;
     using Model.Classes.Tiles.Contracts;
+    using MonopolyGame.Model.Common.CustomExceptions;
     
 
     public class Player
@@ -59,7 +60,7 @@
         {
            
                 if (this.IsBankrupt)
-                    throw new ArgumentException ("Player is Bankrupt!");
+                    throw new PlayerBankruptException(this.Name);
 
                 this.Money += amount;
 

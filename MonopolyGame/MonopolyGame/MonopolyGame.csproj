@@ -60,6 +60,10 @@
     <Compile Include="Model\Classes\Board.cs" />
     <Compile Include="Model\Classes\Cards\ChanceCard.cs" />
     <Compile Include="Model\Classes\Tiles\FreeParking.cs" />
+    <Compile Include="Model\Common\CustomExceptions\MonopolyArgumentException.cs" />
+    <Compile Include="Model\Common\CustomExceptions\MonopolyException.cs" />
+    <Compile Include="Model\Common\CustomExceptions\MonopolyOutOfRangeException.cs" />
+    <Compile Include="Model\Common\CustomExceptions\PlayerBankruptException.cs" />
     <Compile Include="Model\Engine\Contracts\IEngine.cs" />
     <Compile Include="Model\Engine\Engine.cs" />
     <Compile Include="Model\Classes\Tiles\ChanceTile.cs" />

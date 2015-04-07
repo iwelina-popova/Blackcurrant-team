@@ -6,6 +6,7 @@
     using Enumerations;
     using Model.Common.Validators;
     using Model.Classes.Tiles.Contracts;
+    using MonopolyGame.Model.Common.CustomExceptions;
 
     public class Board
     {
@@ -63,7 +64,7 @@
         {
             if (position >= this.tiles.Count || position < 0)
             {
-                throw new ArgumentOutOfRangeException(string.Format("Position should be between 0 and {0}", Board.BOARD_SIZE - 1));
+                throw new MonopolyOutOfRangeException(position, Board.BOARD_SIZE - 1);
             }
             return this.tiles[position];
         }
