@@ -34,15 +34,9 @@
             }
         }
 
-        public void Move(int spaces, int boardSize)
+        public void Move(int position)
         {
-            this.Position += spaces;
-
-            if (this.Position >= boardSize)
-            {
-                this.Position -= boardSize;
-                this.AddMoney(200);
-            }
+            this.Position = position;
         }
 
         public bool AddMoney(int amount)

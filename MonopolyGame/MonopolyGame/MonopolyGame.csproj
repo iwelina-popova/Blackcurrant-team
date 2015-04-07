@@ -59,6 +59,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="Model\Classes\Board.cs" />
     <Compile Include="Model\Classes\Cards\ChanceCard.cs" />
+    <Compile Include="Model\Classes\Tiles\FreeParking.cs" />
     <Compile Include="Model\Engine\Contracts\IEngine.cs" />
     <Compile Include="Model\Engine\Engine.cs" />
     <Compile Include="Model\Classes\Tiles\ChanceTile.cs" />

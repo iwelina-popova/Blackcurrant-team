@@ -104,7 +104,7 @@
         {
             Tile currentTile;
 
-            player.Move(firstRoll + secondRoll, tiles.Count);
+            MovePlayer(player, firstDice, secondDice, board);
             if (tiles[player.Position] != null)
             {
                 currentTile = tiles[player.Position];
@@ -139,6 +139,20 @@
                 }
             }
             Console.WriteLine(player);
+        }
+
+        private void MovePlayer(Player player, Dice firstDice, Dice secondDice, Board board) 
+        {
+            int spaces = firstDice.Roll() + secondDice.Roll();
+
+            int newPosition = player.Position + spaces;
+
+            if (newPosition >= board.Tiles.Count)
+            {
+                newPosition -= board.Tiles.Count;
+                player.AddMoney(200);
+            }
+            player.Move(newPosition);
         }
 
         private void ExecuteActionFromTile(IChoosableAction tile, Player player)
@@ -193,7 +207,7 @@
             board.AddTile(new CommunityTile());
             board.AddTile(new StreetTile("Marlborough Street", 180, 14, StreetTileColor.Orange));
             board.AddTile(new StreetTile("Vine Street", 200, 16, StreetTileColor.Orange));
-            board.AddTile(null);
+            board.AddTile(new FreeParking("Free Parking"));
             board.AddTile(new StreetTile("Strand", 220, 18, StreetTileColor.Red));
             board.AddTile(new ChanceTile());
             board.AddTile(new StreetTile("Fleet Street", 220, 18, StreetTileColor.Red));

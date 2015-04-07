@@ -1,8 +1,10 @@
 ﻿namespace MonopolyGame.Model.Classes
 {
+    using System;
     using System.Collections.Generic;
 
     using Enumerations;
+    using Model.Common.Validators;
     using Model.Classes.Tiles.Contracts;
 
     public class Board
@@ -26,12 +28,23 @@
 
         public void AddTile(Tile tile)
         {
+            ObjectValidator.NullObjectValidation(tile, "Tile cannot be null");
             this.tiles.Add(tile);
         }
 
-        public void AddTileAtPosition(Tile tile, int position) 
+        public void AddTileAtPosition(Tile tile, int position)
         {
+            ObjectValidator.NullObjectValidation(tile, "Tile cannot be null");
             this.tiles[position] = tile;
+        }
+
+        public Tile GetTileAtPosition(int position)
+        {
+            if (position >= this.Tiles.Count || position < 0)
+            {
+                throw new ArgumentOutOfRangeException(string.Format("Position should be between 0 and {0}", Board.BOARD_SIZE - 1));
+            }
+            return this.Tiles[position];
         }
 
         public static Board Instance
