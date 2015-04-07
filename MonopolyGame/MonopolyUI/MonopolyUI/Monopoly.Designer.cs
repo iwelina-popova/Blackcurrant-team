@@ -58,6 +58,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.Fig3 = new System.Windows.Forms.Button();
+            this.Fig2 = new System.Windows.Forms.Button();
+            this.Fig = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -86,6 +89,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.FigPlayer1 = new System.Windows.Forms.Button();
+            this.FigPlayer2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -201,6 +206,8 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.tabPage2.Controls.Add(this.FigPlayer2);
+            this.tabPage2.Controls.Add(this.FigPlayer1);
             this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Controls.Add(this.label22);
             this.tabPage2.Controls.Add(this.button5);
@@ -307,7 +314,7 @@
             // 
             // player2Figure
             // 
-            this.player2Figure.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.player2Figure.BackColor = System.Drawing.Color.Green;
             this.player2Figure.Location = new System.Drawing.Point(95, 507);
             this.player2Figure.Name = "player2Figure";
             this.player2Figure.Size = new System.Drawing.Size(100, 100);
@@ -316,7 +323,7 @@
             // 
             // player1Figure
             // 
-            this.player1Figure.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.player1Figure.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.player1Figure.Location = new System.Drawing.Point(95, 195);
             this.player1Figure.Name = "player1Figure";
             this.player1Figure.Size = new System.Drawing.Size(100, 100);
@@ -450,6 +457,9 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.tabPage3.Controls.Add(this.Fig3);
+            this.tabPage3.Controls.Add(this.Fig2);
+            this.tabPage3.Controls.Add(this.Fig);
             this.tabPage3.Controls.Add(this.label23);
             this.tabPage3.Controls.Add(this.button7);
             this.tabPage3.Controls.Add(this.button8);
@@ -462,6 +472,40 @@
             this.tabPage3.Size = new System.Drawing.Size(1276, 727);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "GameField-3P";
+            // 
+            // Fig3
+            // 
+            this.Fig3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.Fig3.Enabled = false;
+            this.Fig3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Fig3.Location = new System.Drawing.Point(1209, 641);
+            this.Fig3.Name = "Fig3";
+            this.Fig3.Size = new System.Drawing.Size(33, 34);
+            this.Fig3.TabIndex = 20;
+            this.Fig3.UseVisualStyleBackColor = false;
+            // 
+            // Fig2
+            // 
+            this.Fig2.BackColor = System.Drawing.Color.Green;
+            this.Fig2.Enabled = false;
+            this.Fig2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Fig2.Location = new System.Drawing.Point(1179, 630);
+            this.Fig2.Name = "Fig2";
+            this.Fig2.Size = new System.Drawing.Size(34, 30);
+            this.Fig2.TabIndex = 18;
+            this.Fig2.UseVisualStyleBackColor = false;
+            // 
+            // Fig
+            // 
+            this.Fig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Fig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Fig.Enabled = false;
+            this.Fig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Fig.Location = new System.Drawing.Point(1179, 655);
+            this.Fig.Name = "Fig";
+            this.Fig.Size = new System.Drawing.Size(34, 30);
+            this.Fig.TabIndex = 17;
+            this.Fig.UseVisualStyleBackColor = false;
             // 
             // label23
             // 
@@ -547,7 +591,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.pictureBox4.Location = new System.Drawing.Point(206, 436);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(90, 90);
@@ -618,7 +662,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pictureBox2.BackColor = System.Drawing.Color.Green;
             this.pictureBox2.Location = new System.Drawing.Point(206, 238);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(90, 90);
@@ -701,7 +745,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.pictureBox3.Location = new System.Drawing.Point(206, 50);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(90, 90);
@@ -769,6 +813,28 @@
             this.label16.Size = new System.Drawing.Size(231, 31);
             this.label16.TabIndex = 0;
             this.label16.Text = "Player 1 Statistics";
+            // 
+            // FigPlayer1
+            // 
+            this.FigPlayer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.FigPlayer1.Enabled = false;
+            this.FigPlayer1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FigPlayer1.Location = new System.Drawing.Point(1165, 643);
+            this.FigPlayer1.Name = "FigPlayer1";
+            this.FigPlayer1.Size = new System.Drawing.Size(38, 33);
+            this.FigPlayer1.TabIndex = 13;
+            this.FigPlayer1.UseVisualStyleBackColor = false;
+            // 
+            // FigPlayer2
+            // 
+            this.FigPlayer2.BackColor = System.Drawing.Color.Green;
+            this.FigPlayer2.Enabled = false;
+            this.FigPlayer2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FigPlayer2.Location = new System.Drawing.Point(1185, 643);
+            this.FigPlayer2.Name = "FigPlayer2";
+            this.FigPlayer2.Size = new System.Drawing.Size(40, 36);
+            this.FigPlayer2.TabIndex = 14;
+            this.FigPlayer2.UseVisualStyleBackColor = false;
             // 
             // Monopoly
             // 
@@ -877,6 +943,11 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button Fig;
+        private System.Windows.Forms.Button Fig3;
+        private System.Windows.Forms.Button Fig2;
+        private System.Windows.Forms.Button FigPlayer2;
+        private System.Windows.Forms.Button FigPlayer1;
 
     }
 }

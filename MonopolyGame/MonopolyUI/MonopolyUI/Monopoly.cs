@@ -1,16 +1,20 @@
 ﻿using MonopolyGame.Model.Classes;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using MonopolyGame.Model.Classes.Tiles.Contracts;
+using MonopolyGame.Model.Engine;
 
 namespace MonopolyUI
 {
-    using MonopolyGame.Model.Delegates;
+    public enum PlayerTurn { P1, P2, P3 }
 
-    //public enum PlayerTurn { P1, P2, P3 }
 
     public partial class Monopoly : Form
     {
+
+        const int space = 55;
         /// <summary>
         /// Below is the custom method which prepares our game by (re)setting everything, and getting it ready for play
         /// </summary>
@@ -20,35 +24,17 @@ namespace MonopolyUI
 
         public static Player player3 = new Player(null);
 
-        private static Board board = Board.Instance;
-        private static int currentPlayerIndex = 0;
-        private static Player currentPlayer;
+        public static Dice dice = new Dice();
 
-        //public static PlayerTurn PlayerTurn = PlayerTurn.P1;
+        public static Engine engine = new Engine();
 
-        public static void InitCurrentPlayer() 
-        {
-            if (board.Players.Count > 0)
-            {
-                currentPlayer = board.Players[currentPlayerIndex];
-            }
-        }
+        
 
-        public static void PlayerTurn(Player player, Tile[] tiles, int firstRoll, int secondRoll)
-        {
-            Tile currentTile;
-
-            player.Move(firstRoll + secondRoll, tiles.Length);
-            if (tiles[player.Position] != null)
-            {
-                currentTile = tiles[player.Position];
-                currentTile.Action(player);
-            }
-            //Delegates.PrintingMethodInstance(player);
-        }
+        public static PlayerTurn PlayerTurn = PlayerTurn.P1;
 
         public void BeginNewGame()
         {
+
             //Hides the tab headers
             tabControl1.Appearance = TabAppearance.FlatButtons;
             tabControl1.ItemSize = new Size(0, 1);
@@ -100,8 +86,10 @@ namespace MonopolyUI
         {
             player1Prop.Text = p1.Properties.Count.ToString();
             player1Cash.Text = p1.Money.ToString();
+            
             player2Prop.Text = p2.Properties.Count.ToString();
             player2Cash.Text = p2.Money.ToString();
+            
         }
 
         public void UpdatePlayerInfo3(Player p1, Player p2, Player p3)
@@ -129,80 +117,51 @@ namespace MonopolyUI
         {
             if (playerCount1.Checked)
             {
-                Player player = new Player(GetNames());
-                board.AddPlayer(player);
-                label1.Text = player.Name;
+                player1.Name = GetNames();
+                label1.Text = player1.Name;
+                player2.Name = GetNames();
+                label10.Text = player2.Name;
 
-                player = new Player(GetNames());
-                board.AddPlayer(player);
-                label10.Text = player.Name;
+                engine.AddPlayer(player1);
+                engine.AddPlayer(player2);
 
                 tabControl1.TabPages.Clear();
                 tabControl1.TabPages.Add(tabPage2);
+
+                player1.Figure = FigPlayer1;
+                player2.Figure = FigPlayer2;
 
                 UpdatePlayerInfo2(player1, player2);
 
                 button6.Hide();
             }
-            else if (playerCount3.Checked) 
+            else if (playerCount3.Checked)
             {
-                Player player = new Player(GetNames());
-                board.AddPlayer(player);
-                label16.Text = player.Name;
+                player1.Name = GetNames();
+                label16.Text = player1.Name;
+                player2.Name = GetNames();
+                label11.Text = player2.Name;
+                player3.Name = GetNames();
+                label21.Text = player3.Name;
 
-                player = new Player(GetNames());
-                board.AddPlayer(player);
-                label11.Text = player.Name;
-
-                player = new Player(GetNames());
-                board.AddPlayer(player);
-                label21.Text = player.Name;
+                engine.AddPlayer(player1);
+                engine.AddPlayer(player2);
+                engine.AddPlayer(player3);
 
                 tabControl1.TabPages.Clear();
                 tabControl1.TabPages.Add(tabPage3);
 
-                UpdatePlayerInfo3(player1, player2, player3);
+                player1.Figure = Fig;
+                player2.Figure = Fig2;
+                player3.Figure = Fig3;
 
+                UpdatePlayerInfo3(player1, player2, player3);
                 button7.Hide();
             }
 
-            Delegates.PrintingMethodInstance = Console.WriteLine;//NEEDS TO BE REDONE WITH WINDOWS FORMS DIALOGS
-            Delegates.ReadingMethodIntance = Console.ReadLine;//NEEDS TO BE REDONE WITH WINDOWS FORMS DIALOGS
-            InitCurrentPlayer();
 
-            //if (playerCount1.Checked)
-            //{
-            //    player1.Name = GetNames();
-            //    label1.Text = player1.Name;
-            //    player2.Name = GetNames();
-            //    label10.Text = player2.Name;
-
-            //    tabControl1.TabPages.Clear();
-            //    tabControl1.TabPages.Add(tabPage2);
-
-            //    UpdatePlayerInfo2(player1, player2);
-
-            //    button6.Hide();
-            //}
-            //else if (playerCount3.Checked)
-            //{
-            //    player1.Name = GetNames();
-            //    label16.Text = player1.Name;
-            //    player2.Name = GetNames();
-            //    label11.Text = player2.Name;
-            //    player3.Name = GetNames();
-            //    label21.Text = player3.Name;
-
-            //    tabControl1.TabPages.Clear();
-            //    tabControl1.TabPages.Add(tabPage3);
-
-            //    UpdatePlayerInfo3(player1, player2, player3);
-
-            //    button7.Hide();
-            //}
 
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -225,31 +184,25 @@ namespace MonopolyUI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int dice1 = Dice.Roll();
-            int dice2 = Dice.Roll();
+            int dice1 = dice.Roll();
+            int dice2 = dice.Roll();
             int moves = dice1 + dice2;
             bool Pair = dice1 == dice2;
-            label22.Text = string.Format("{0} + {1} = {2}", dice1.ToString(), dice2.ToString(), moves.ToString());
+            label22.Text = string.Format("{0} + {1} = {2}", dice1, dice2, moves);
 
-            PlayerTurn(currentPlayer, board.Tiles, dice1, dice2);
-
-            if (currentPlayer.IsBankrupt)
+            switch (PlayerTurn)
             {
-                board.RemovePlayer(currentPlayer);
-                currentPlayerIndex--;
+                case PlayerTurn.P1:
+                    player1.Move(moves, 40);
+                    UpdatePlayerInfo2(player1,player2);
+                    //DetermineTile();
+                    break;
+                case PlayerTurn.P2:
+                    player2.Move(moves, 40);
+                    UpdatePlayerInfo2(player1,player2);
+                    //DetermineTile();
+                    break;
             }
-
-            //switch (PlayerTurn)
-            //{
-            //    case PlayerTurn.P1:
-            //        player1.Move(moves, 40);
-            //        //DetermineTile();
-            //        break;
-            //    case PlayerTurn.P2:
-            //        player2.Move(moves, 40);
-            //        //DetermineTile();
-            //        break;
-            //}
 
             if (Pair) return;
             button4.Hide();
@@ -258,28 +211,15 @@ namespace MonopolyUI
 
         private void EndOfTurn2p()
         {
-            if (board.Players.Count <= 1)
+            switch (PlayerTurn)
             {
-                //END GAME LOGIC
+                case PlayerTurn.P1:
+                    PlayerTurn = PlayerTurn.P2;
+                    break;
+                case PlayerTurn.P2:
+                    PlayerTurn = PlayerTurn.P1;
+                    break;
             }
-
-            currentPlayerIndex++;
-            if (currentPlayerIndex >= board.Players.Count)
-            {
-                currentPlayerIndex = 0;
-            }
-
-            //currentPlayer = board.Players[currentPlayerIndex];
-            //switch (PlayerTurn)
-            //{
-            //    case PlayerTurn.P1:
-            //        PlayerTurn = PlayerTurn.P2;
-            //        break;
-            //    case PlayerTurn.P2:
-            //        PlayerTurn = PlayerTurn.P1;
-            //        break;
-            //}
-
             button4.Show();
         }
 
@@ -292,37 +232,40 @@ namespace MonopolyUI
 
         #region 3-PLAYER-GAME METHODS
         //Roll button-3players
+
+ 
         private void button9_Click(object sender, EventArgs e)
         {
-            int dice1 = Dice.Roll();
-            int dice2 = Dice.Roll();
+            
+            int dice1 = dice.Roll();
+            int dice2 = dice.Roll();
             int moves = dice1 + dice2;
             bool Pair = dice1 == dice2;
+            
             label23.Text = string.Format("{0} + {1} = {2}", dice1.ToString(), dice2.ToString(), moves.ToString());
 
-            PlayerTurn(currentPlayer, board.Tiles, dice1, dice2);
-
-            if (currentPlayer.IsBankrupt)
+            switch (PlayerTurn)
             {
-                board.RemovePlayer(currentPlayer);
-                currentPlayerIndex--;
+                case PlayerTurn.P1:
+                    player1.Move(moves, 40);
+                    
+                    UpdatePlayerInfo3(player1, player2,player3);
+                   
+                    //DetermineTile();
+                    break;
+                case PlayerTurn.P2:
+                    player2.Move(moves, 40);
+                    //Board.Instance.Tiles[moves].Action(player2);
+                    UpdatePlayerInfo3(player1, player2, player3);
+                    //DetermineTile();
+                    break;
+                case PlayerTurn.P3:
+                    player3.Move(moves, 40);
+                    //Board.Instance.Tiles[moves].Action(player3);
+                    UpdatePlayerInfo3(player1, player2, player3);
+                    //DetermineTile();
+                    break;
             }
-
-            //switch (PlayerTurn)
-            //{
-            //    case PlayerTurn.P1:
-            //        player1.Move(moves, 40);
-            //        //DetermineTile();
-            //        break;
-            //    case PlayerTurn.P2:
-            //        player2.Move(moves, 40);
-            //        //DetermineTile();
-            //        break;
-            //    case PlayerTurn.P3:
-            //        player3.Move(moves, 40);
-            //        //DetermineTile();
-            //        break;
-            //}
 
             if (Pair) return;
             button9.Hide();
@@ -331,25 +274,24 @@ namespace MonopolyUI
 
         private void EndOfTurn3p()
         {
-            //switch (PlayerTurn)
-            //{
-            //    case PlayerTurn.P1:
-            //        PlayerTurn = PlayerTurn.P2;
-            //        break;
-            //    case PlayerTurn.P2:
-            //        PlayerTurn = PlayerTurn.P3;
-            //        break;
-            //    case PlayerTurn.P3:
-            //        PlayerTurn = PlayerTurn.P1;
-            //        break;
-            //}
-
+            switch (PlayerTurn)
+            {
+                case PlayerTurn.P1:
+                    PlayerTurn = PlayerTurn.P2;
+                    break;
+                case PlayerTurn.P2:
+                    PlayerTurn = PlayerTurn.P3;
+                    break;
+                case PlayerTurn.P3:
+                    PlayerTurn = PlayerTurn.P1;
+                    break;
+            }
             button9.Show();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            EndOfTurn2p();
+            EndOfTurn3p();
             button7.Hide();
         }
         #endregion

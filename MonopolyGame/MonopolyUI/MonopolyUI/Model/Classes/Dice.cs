@@ -1,31 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MonopolyGame.Model.Classes
+﻿namespace MonopolyGame.Model.Classes
 {
+    using System;
+
     public class Dice
     {
-        private static Random generator;
+        private Random generator;
 
-        static Dice()
+        public Dice()
         {
-            generator = new Random();
+            this.generator = new Random();
         }
 
-        public static int Roll()
+        public static bool TryToRollDoubles(Dice firstDice, Dice secondDice)
         {
-            int dice = generator.Next(1, 7);
+            return firstDice.Roll() == secondDice.Roll();
+        }
+
+        public int Roll()
+        {
+            int dice = this.generator.Next(1, 7);
             return dice;
-
-            //return generator.Next(1, 7);
-        }
-
-        public static bool TryToRollDoubles(int firstRoll,int secondRoll) 
-        {
-            return firstRoll == secondRoll;
         }
     }
 }
