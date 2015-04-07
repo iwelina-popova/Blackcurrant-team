@@ -1,6 +1,6 @@
 ﻿namespace MonopolyGame.Model.Enumerations
 {
-    public enum StreetTileColor
+    public enum DistrictColor
     {
         Brown,
         Yellow,

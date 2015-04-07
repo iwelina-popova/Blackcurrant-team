@@ -1,5 +1,7 @@
 ﻿namespace MonopolyGame.Model.Classes.Tiles
 {
+    using System;
+
     using Enumerations;
     using Model.Classes.Actions;
     using Model.Classes.Actions.Contracts;
@@ -19,7 +21,7 @@
             OrangeDistrictTiles = 0;
         }
 
-        public StreetTile(string name, int price, int baseRent, StreetTileColor color)
+        public StreetTile(string name, int price, int baseRent, DistrictColor color)
             : base(name, price, baseRent)
         {
             this.Color = color;
@@ -43,21 +45,38 @@
 
         public static int OrangeDistrictTiles { get; private set; }
 
-        public StreetTileColor Color { get; private set; }
+        public DistrictColor Color { get; private set; }
 
-        public void IncrementNumberOfStreets(StreetTileColor color)
+        private void IncrementNumberOfStreets(DistrictColor color)
         {
             switch (color)
             {
-                case StreetTileColor.Brown: BrowDistrictTiles++; break;
-                case StreetTileColor.Yellow: YellowDistricTiles++; break;
-                case StreetTileColor.DarkBlue: DarkBlueDistrictTiles++; break;
-                case StreetTileColor.LiteBlue: LiteBlueDistrictTiles++; break;
-                case StreetTileColor.Green: GreenDistrictTiles++; break;
-                case StreetTileColor.Red: RedDistrictTiles++; break;
-                case StreetTileColor.Pink: PinkDistrictTiles++; break;
-                case StreetTileColor.Orange: OrangeDistrictTiles++; break;
+                case DistrictColor.Brown: BrowDistrictTiles++; break;
+                case DistrictColor.Yellow: YellowDistricTiles++; break;
+                case DistrictColor.DarkBlue: DarkBlueDistrictTiles++; break;
+                case DistrictColor.LiteBlue: LiteBlueDistrictTiles++; break;
+                case DistrictColor.Green: GreenDistrictTiles++; break;
+                case DistrictColor.Red: RedDistrictTiles++; break;
+                case DistrictColor.Pink: PinkDistrictTiles++; break;
+                case DistrictColor.Orange: OrangeDistrictTiles++; break;
             }
+        }
+
+        public static int GetNumberOfStreetsInDistrict(DistrictColor color)
+        {
+            switch (color)
+            {
+                case DistrictColor.Brown: return BrowDistrictTiles;
+                case DistrictColor.Yellow: return YellowDistricTiles;
+                case DistrictColor.DarkBlue: return DarkBlueDistrictTiles;
+                case DistrictColor.LiteBlue: return LiteBlueDistrictTiles;
+                case DistrictColor.Green: return GreenDistrictTiles;
+                case DistrictColor.Red: return RedDistrictTiles;
+                case DistrictColor.Pink: return PinkDistrictTiles;
+                case DistrictColor.Orange: return OrangeDistrictTiles;
+                default:
+                    throw new ArgumentException("District color not supported");
+	        }
         }
     }
 }

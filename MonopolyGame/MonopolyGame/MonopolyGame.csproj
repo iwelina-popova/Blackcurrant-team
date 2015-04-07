@@ -79,7 +79,7 @@
     <Compile Include="Model\Common\Validators\ObjectValidator.cs" />
     <Compile Include="Model\Delegates\Delegates.cs" />
     <Compile Include="Model\Enumerations\CardType.cs" />
-    <Compile Include="Model\Enumerations\StreetTileColor.cs" />
+    <Compile Include="Model\Enumerations\DistrictColor.cs" />
     <Compile Include="Model\Classes\Tiles\Contracts\Tile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

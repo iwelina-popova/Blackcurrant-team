@@ -24,7 +24,5 @@
                 this.name = value;
             }
         }
-
-        //public abstract void Action(Player player);
     }
 }

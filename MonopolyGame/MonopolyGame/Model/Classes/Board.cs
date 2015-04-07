@@ -31,13 +31,21 @@
             }
         }
 
-        public IList<Tile> Tiles
+        public int Size
         {
-            get
+            get 
             {
-                return new List<Tile>(this.tiles);
+                return this.tiles.Count;
             }
         }
+
+        //public IList<Tile> Tiles
+        //{
+        //    get
+        //    {
+        //        return new List<Tile>(this.tiles);
+        //    }
+        //}
 
         public void AddTile(Tile tile)
         {
@@ -53,11 +61,11 @@
 
         public Tile GetTileAtPosition(int position)
         {
-            if (position >= this.Tiles.Count || position < 0)
+            if (position >= this.tiles.Count || position < 0)
             {
                 throw new ArgumentOutOfRangeException(string.Format("Position should be between 0 and {0}", Board.BOARD_SIZE - 1));
             }
-            return this.Tiles[position];
+            return this.tiles[position];
         }
     }
 }

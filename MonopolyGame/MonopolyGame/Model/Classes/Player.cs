@@ -3,11 +3,13 @@
     using System.Collections.Generic;
     using System.Text;
 
+    using Model.Common.Validators;
     using Model.Classes.Cards.Contracts;
     using Model.Classes.Tiles.Contracts;
 
     public class Player
     {
+        private string name;
         private IEnumerable<PropertyTile> properties;
 
         public Player(string name)
@@ -15,18 +17,26 @@
             this.Name = name;
             this.Position = 0;
             this.Money = 1000;
-            this.CanMove = true;
             this.IsBankrupt = false;
             this.properties = new List<PropertyTile>();
         }
 
-        public string Name { get; private set; }
+        public string Name
+        {
+            get 
+            {
+                return this.name;
+            }
+            private set 
+            {
+                ObjectValidator.StringNullOrEmptyValidator(value, "Name cannot be empty or null");
+                this.name = value;
+            }
+        }
 
         public int Position { get; private set; }
 
         public int Money { get; private set; }
-
-        public bool CanMove { get; set; }
 
         public bool IsBankrupt { get; private set; }
 

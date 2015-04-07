@@ -80,7 +80,7 @@
             {
                 foreach (Player player in this.players)
                 {
-                    this.PlayerTurn(player, board.Tiles, firstDice.Roll(), secondDice.Roll());
+                    this.PlayerTurn(player, board, firstDice.Roll(), secondDice.Roll());
                     if (this.CheckWinningCondition())
                     {
                         break;
@@ -100,7 +100,7 @@
         }
 
 
-        public void PlayerTurn(Player player, IList<Tile> tiles, int firstRoll, int secondRoll)
+        public void PlayerTurn(Player player, Board boar, int firstRoll, int secondRoll)
         {
             Tile currentTile;
 
@@ -144,9 +144,9 @@
 
             int newPosition = player.Position + spaces;
 
-            if (newPosition >= board.Tiles.Count)
+            if (newPosition >= board.Size)
             {
-                newPosition -= board.Tiles.Count;
+                newPosition -= board.Size;
                 player.AddMoney(200);
             }
             player.Move(newPosition);
@@ -161,7 +161,7 @@
         {
             if (tile.Actions.Count > 1)
             {
-                Console.WriteLine("Continue");
+                Console.WriteLine("Choose Action");
                 Console.ReadLine();
                 foreach (IAction action in tile.Actions)
                 {
@@ -190,45 +190,45 @@
         private void LoadTiles()
         {
             board.AddTile(new StartTile());
-            board.AddTile(new StreetTile("Old Kent Road", 60, 2, StreetTileColor.Brown));
+            board.AddTile(new StreetTile("Old Kent Road", 60, 2, DistrictColor.Brown));
             board.AddTile(new CommunityTile());
-            board.AddTile(new StreetTile("Whitechapel Road", 60, 4, StreetTileColor.Brown));
+            board.AddTile(new StreetTile("Whitechapel Road", 60, 4, DistrictColor.Brown));
             board.AddTile(new TaxTile("Income Tax", 200));
             board.AddTile(new StationTile("Kings Cross Station"));
-            board.AddTile(new StreetTile("The Angel Islington", 100, 6, StreetTileColor.LiteBlue));
+            board.AddTile(new StreetTile("The Angel Islington", 100, 6, DistrictColor.LiteBlue));
             board.AddTile(new ChanceTile());
-            board.AddTile(new StreetTile("Euston Road", 100, 6, StreetTileColor.LiteBlue));
-            board.AddTile(new StreetTile("Pentoville Road", 8, 120, StreetTileColor.LiteBlue));
+            board.AddTile(new StreetTile("Euston Road", 100, 6, DistrictColor.LiteBlue));
+            board.AddTile(new StreetTile("Pentoville Road", 8, 120, DistrictColor.LiteBlue));
             board.AddTile(new JailTile());
-            board.AddTile(new StreetTile("Pall Mall", 140, 10, StreetTileColor.Pink));
+            board.AddTile(new StreetTile("Pall Mall", 140, 10, DistrictColor.Pink));
             board.AddTile(new TaxTile("Electric Company", 150));
-            board.AddTile(new StreetTile("Whitehall", 140, 10, StreetTileColor.Pink));
-            board.AddTile(new StreetTile("Northmurl`d Avenue", 160, 12, StreetTileColor.Pink));
+            board.AddTile(new StreetTile("Whitehall", 140, 10, DistrictColor.Pink));
+            board.AddTile(new StreetTile("Northmurl`d Avenue", 160, 12, DistrictColor.Pink));
             board.AddTile(new StationTile("Marylebone Station"));
-            board.AddTile(new StreetTile("Bow Street", 180, 14, StreetTileColor.Orange));
+            board.AddTile(new StreetTile("Bow Street", 180, 14, DistrictColor.Orange));
             board.AddTile(new CommunityTile());
-            board.AddTile(new StreetTile("Marlborough Street", 180, 14, StreetTileColor.Orange));
-            board.AddTile(new StreetTile("Vine Street", 200, 16, StreetTileColor.Orange));
+            board.AddTile(new StreetTile("Marlborough Street", 180, 14, DistrictColor.Orange));
+            board.AddTile(new StreetTile("Vine Street", 200, 16, DistrictColor.Orange));
             board.AddTile(new FreeParking("Free Parking"));
-            board.AddTile(new StreetTile("Strand", 220, 18, StreetTileColor.Red));
+            board.AddTile(new StreetTile("Strand", 220, 18, DistrictColor.Red));
             board.AddTile(new ChanceTile());
-            board.AddTile(new StreetTile("Fleet Street", 220, 18, StreetTileColor.Red));
-            board.AddTile(new StreetTile("Trafalgar Square", 240, 20, StreetTileColor.Red));
+            board.AddTile(new StreetTile("Fleet Street", 220, 18, DistrictColor.Red));
+            board.AddTile(new StreetTile("Trafalgar Square", 240, 20, DistrictColor.Red));
             board.AddTile(new StationTile("Fenchurch st. Station"));
-            board.AddTile(new StreetTile("Leicester Square", 260, 22, StreetTileColor.Yellow));
-            board.AddTile(new StreetTile("Coventry Street", 260, 22, StreetTileColor.Yellow));
+            board.AddTile(new StreetTile("Leicester Square", 260, 22, DistrictColor.Yellow));
+            board.AddTile(new StreetTile("Coventry Street", 260, 22, DistrictColor.Yellow));
             board.AddTile(new TaxTile("Water Works", 150));
-            board.AddTile(new StreetTile("Piccadilly", 280, 22, StreetTileColor.Yellow));
+            board.AddTile(new StreetTile("Piccadilly", 280, 22, DistrictColor.Yellow));
             board.AddTile(new GoToJailTile());
-            board.AddTile(new StreetTile("Regent Street", 300, 26, StreetTileColor.Green));
-            board.AddTile(new StreetTile("Oxford Street", 300, 26, StreetTileColor.Green));
+            board.AddTile(new StreetTile("Regent Street", 300, 26, DistrictColor.Green));
+            board.AddTile(new StreetTile("Oxford Street", 300, 26, DistrictColor.Green));
             board.AddTile(new CommunityTile());
-            board.AddTile(new StreetTile("Bond Street", 320, 28, StreetTileColor.Green));
+            board.AddTile(new StreetTile("Bond Street", 320, 28, DistrictColor.Green));
             board.AddTile(new StationTile("Liverpool st. Station"));
             board.AddTile(new ChanceTile());
-            board.AddTile(new StreetTile("Park Lane", 350, 35, StreetTileColor.DarkBlue));
+            board.AddTile(new StreetTile("Park Lane", 350, 35, DistrictColor.DarkBlue));
             board.AddTile(new TaxTile("Super Tax", 100));
-            board.AddTile(new StreetTile("Mayfair", 400, 50, StreetTileColor.DarkBlue));
+            board.AddTile(new StreetTile("Mayfair", 400, 50, DistrictColor.DarkBlue));
         }
 
         private Queue<ChanceCard> LoadChanceCards()

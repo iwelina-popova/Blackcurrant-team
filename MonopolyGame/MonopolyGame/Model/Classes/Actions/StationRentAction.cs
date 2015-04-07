@@ -16,8 +16,18 @@
             {
                 int numberOfStationsOfOwner = property.Owner.Properties.Count(tile => tile is StationTile);
 
-                property.Owner.AddMoney(property.BaseRent * numberOfStationsOfOwner);
-                player.WidthdrawMoney(property.BaseRent * numberOfStationsOfOwner);
+
+
+                if (numberOfStationsOfOwner == StationTile.NumberOfStations)
+                {
+                    property.Owner.AddMoney(property.BaseRent * numberOfStationsOfOwner);
+                    player.WidthdrawMoney(property.BaseRent * numberOfStationsOfOwner);
+                }
+                else 
+                {
+                    property.Owner.AddMoney(property.BaseRent);
+                    player.WidthdrawMoney(property.BaseRent);
+                }
             }
         }
     }

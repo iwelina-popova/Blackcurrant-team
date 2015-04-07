@@ -22,8 +22,16 @@
                 int numberOfStreetsInDistrict = streetProperty.Owner.Properties
                     .Count(tile => tile is StreetTile && ((StreetTile)tile).Color == streetProperty.Color);
 
-                streetProperty.Owner.AddMoney(streetProperty.BaseRent * numberOfStreetsInDistrict);
-                player.WidthdrawMoney(streetProperty.BaseRent * numberOfStreetsInDistrict);
+                if (numberOfStreetsInDistrict == StreetTile.GetNumberOfStreetsInDistrict(streetProperty.Color))
+                {
+                    streetProperty.Owner.AddMoney(streetProperty.BaseRent * numberOfStreetsInDistrict);
+                    player.WidthdrawMoney(streetProperty.BaseRent * numberOfStreetsInDistrict);
+                }
+                else 
+                {
+                    streetProperty.Owner.AddMoney(streetProperty.BaseRent);
+                    player.WidthdrawMoney(streetProperty.BaseRent);
+                }
             }
         }
     }
