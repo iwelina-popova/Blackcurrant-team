@@ -5,16 +5,8 @@
     using Model.Classes.Actions.Contracts;
     using Model.Classes.Tiles.Contracts;
 
-    public class StreetTile : PropertyTile,IChoosableAction
+    public class StreetTile : PropertyTile, IChoosableAction
     {
-        public StreetTile(string name, int price, int baseRent, StreetTileColor color)
-            : base(name, price, baseRent)
-        {
-            this.Color = color;
-            this.AddAction(new StreetRentAction());
-            IncrementNumberOfStreets(this.Color);
-        }
-
         static StreetTile()
         {
             BrowDistrictTiles = 0;
@@ -27,19 +19,33 @@
             OrangeDistrictTiles = 0;
         }
 
-        public StreetTileColor Color { get; private set; }
+        public StreetTile(string name, int price, int baseRent, StreetTileColor color)
+            : base(name, price, baseRent)
+        {
+            this.Color = color;
+            this.AddAction(new StreetRentAction());
+            this.IncrementNumberOfStreets(this.Color);
+        }
 
         public static int BrowDistrictTiles { get; private set; }
+
         public static int YellowDistricTiles { get; private set; }
+
         public static int DarkBlueDistrictTiles { get; private set; }
+
         public static int LiteBlueDistrictTiles { get; private set; }
+
         public static int GreenDistrictTiles { get; private set; }
+
         public static int RedDistrictTiles { get; private set; }
+
         public static int PinkDistrictTiles { get; private set; }
+
         public static int OrangeDistrictTiles { get; private set; }
 
+        public StreetTileColor Color { get; private set; }
 
-        public void IncrementNumberOfStreets(StreetTileColor color) 
+        public void IncrementNumberOfStreets(StreetTileColor color)
         {
             switch (color)
             {

@@ -1,13 +1,14 @@
 ﻿namespace MonopolyGame.Model.Classes.Actions
 {
     using System.Linq;
+
+    using Model.Classes.Actions.Contracts;
     using Model.Classes.Tiles;
     using Model.Classes.Tiles.Contracts;
-    using Model.Classes.Actions.Contracts;    
-    using Model.Enumerations;
     using Model.Common.Validators;
+    using Model.Enumerations;
 
-    class StreetRentAction : BaseRentAction, IRentable
+    public class StreetRentAction : BaseRentAction, IRentable
     {
         public override void PayRent(Player player, PropertyTile property)
         {

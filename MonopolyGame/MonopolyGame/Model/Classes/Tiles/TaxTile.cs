@@ -3,14 +3,14 @@
     using System.Collections.Generic;
 
     using Model.Classes.Actions;
-    using Model.Classes.Actions.Contracts;    
-    using Model.Common.Validators;
+    using Model.Classes.Actions.Contracts;
     using Model.Classes.Tiles.Contracts;
+    using Model.Common.Validators;
 
-    public class TaxTile : ChoosableActionTile,IChoosableAction
+    public class TaxTile : ChoosableActionTile, IChoosableAction
     {
-        public TaxTile(string name, int tax) 
-            : base(name) 
+        public TaxTile(string name, int tax)
+            : base(name)
         {
             this.Tax = tax;
             this.AddAction(new TaxAction());

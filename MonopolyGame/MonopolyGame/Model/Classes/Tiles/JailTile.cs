@@ -1,18 +1,18 @@
 ﻿namespace MonopolyGame.Model.Classes.Tiles
 {
-    using Model.Delegates;
-    using Model.Classes.Tiles.Contracts;
     using Model.Classes.Actions;
     using Model.Classes.Actions.Contracts;
+    using Model.Classes.Tiles.Contracts;
+    using Model.Delegates;
 
-    public class JailTile : TaxTile,IChoosableAction
+    public class JailTile : TaxTile, IChoosableAction
     {
         private const string JAIL_TILE_NAME = "Jail";
         private const int JAIL_TAX = 50;
         private int cycle;
 
         public JailTile()
-            : base(JAIL_TILE_NAME,JAIL_TAX)
+            : base(JAIL_TILE_NAME, JAIL_TAX)
         {
             //this.cycle = 3;
         }

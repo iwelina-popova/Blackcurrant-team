@@ -2,10 +2,10 @@
 {
     using System.Collections.Generic;
 
-    using Model.Enumerations;
     using Model.Classes.Actions;
     using Model.Classes.Actions.Contracts;
     using Model.Common.Validators;
+    using Model.Enumerations;
 
     public abstract class Card : IChoosableAction
     {

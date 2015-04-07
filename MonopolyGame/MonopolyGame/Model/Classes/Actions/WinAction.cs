@@ -4,7 +4,7 @@
     using Model.Classes.Cards.Contracts;
     using Model.Common.Validators;
 
-    class WinAction : IAction
+    public class WinAction : IAction
     {
         public void Execute(IChoosableAction type, Player player)
         {

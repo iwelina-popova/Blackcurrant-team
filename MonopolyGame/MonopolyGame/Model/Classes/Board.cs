@@ -18,6 +18,19 @@
             this.tiles = new List<Tile>(BOARD_SIZE);
         }
 
+        public static Board Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Board();
+                }
+
+                return instance;
+            }
+        }
+
         public IList<Tile> Tiles
         {
             get
@@ -45,18 +58,6 @@
                 throw new ArgumentOutOfRangeException(string.Format("Position should be between 0 and {0}", Board.BOARD_SIZE - 1));
             }
             return this.Tiles[position];
-        }
-
-        public static Board Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new Board();
-                }
-                return instance;
-            }
         }
     }
 }

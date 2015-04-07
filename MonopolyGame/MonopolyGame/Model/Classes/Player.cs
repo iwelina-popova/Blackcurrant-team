@@ -1,10 +1,10 @@
 ﻿namespace MonopolyGame.Model.Classes
 {
-    using System.Text;
     using System.Collections.Generic;
+    using System.Text;
 
-    using Model.Classes.Tiles.Contracts;
     using Model.Classes.Cards.Contracts;
+    using Model.Classes.Tiles.Contracts;
 
     public class Player
     {
@@ -21,9 +21,13 @@
         }
 
         public string Name { get; private set; }
+
         public int Position { get; private set; }
+
         public int Money { get; private set; }
+
         public bool CanMove { get; set; }
+
         public bool IsBankrupt { get; private set; }
 
         public IEnumerable<PropertyTile> Properties

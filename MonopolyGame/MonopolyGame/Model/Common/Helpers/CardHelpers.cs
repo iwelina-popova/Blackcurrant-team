@@ -5,9 +5,9 @@
 
     using Model.Classes.Cards.Contracts;
 
-    class CardHelpers
+    public class CardHelpers
     {
-        static Random r = new Random();
+        private static Random r = new Random();
 
         public static Queue<T> ShuffleCards<T>(T[] cards)
         {
@@ -30,7 +30,7 @@
             return result;
         }
 
-        public static  T DrawCard<T>(Queue<T> cards) where T : Card
+        public static T DrawCard<T>(Queue<T> cards) where T : Card
         {
             T currentCard = cards.Dequeue();
             cards.Enqueue(currentCard);

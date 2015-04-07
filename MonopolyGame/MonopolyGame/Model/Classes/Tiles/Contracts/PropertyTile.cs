@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MonopolyGame.Model.Classes.Tiles.Contracts
+﻿namespace MonopolyGame.Model.Classes.Tiles.Contracts
 {
-    using Model.Delegates;
+    using System;
+
     using Model.Classes.Actions;
     using Model.Classes.Actions.Contracts;
     using Model.Common.Validators;
+    using Model.Delegates;
 
     public abstract class PropertyTile : ChoosableActionTile, IChoosableAction
     {
@@ -24,7 +20,9 @@ namespace MonopolyGame.Model.Classes.Tiles.Contracts
         }
 
         public Player Owner { get; protected set; }
+
         public int Price { get; protected set; }
+
         public int BaseRent { get; protected set; }
 
         public void ChangeOwner(Player newOwner)
@@ -58,7 +56,6 @@ namespace MonopolyGame.Model.Classes.Tiles.Contracts
         //        PayRent(player);
         //    }
         //}
-
 
         //public bool Buy(Player player)
         //{
