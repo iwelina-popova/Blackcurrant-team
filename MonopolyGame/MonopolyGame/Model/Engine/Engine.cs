@@ -81,6 +81,7 @@
             {
                 foreach (Player player in this.players)
                 {
+                    Console.WriteLine();
                     Console.WriteLine(player);
                     this.PlayerTurn(player, board, firstDice.Roll(), secondDice.Roll());
                     if (this.CheckWinningCondition())
@@ -109,7 +110,7 @@
             this.MovePlayer(player, firstDice, secondDice, board);
             currentTile = board.GetTileAtPosition(player.Position);
 
-            Console.WriteLine("Current tile name: {0}", currentTile.Name);
+            Console.WriteLine("Current tile {0}", currentTile);
             IChoosableAction actionTile = currentTile as IChoosableAction;
             if (actionTile != null)
             {
@@ -161,11 +162,17 @@
         {
             if (tile.Actions.Count > 1)
             {
+                ChoosableActionTile actionTile = tile as ChoosableActionTile;
+                ObjectValidator.NullObjectValidation(actionTile);
+
+                ICollection<IAction> availableActions = this.GetAvailableActions(actionTile, player);
+
                 Console.WriteLine("Choose Action");
-                Console.WriteLine(this.AvailableActionsToString(tile.Actions));
+                Console.WriteLine(this.AvailableActionsToString(availableActions));
+
                 string actionString = Console.ReadLine();
 
-                IAction chosenAction = this.ChooseAction(tile.Actions, actionString);
+                IAction chosenAction = this.ChooseAction(availableActions, actionString);
                 chosenAction.Execute(tile, player);
 
                 if (player.IsBankrupt)
@@ -200,7 +207,7 @@
             }
         }
 
-        private string AvailableActionsToString(IEnumerable<IAction> availableActions) 
+        private string AvailableActionsToString(IEnumerable<IAction> availableActions)
         {
             StringBuilder result = new StringBuilder();
             result.AppendLine("Available actions: ");
@@ -224,6 +231,32 @@
                 }
             }
             return result.ToString();
+        }
+
+        private ICollection<IAction> GetAvailableActions(ChoosableActionTile tile, Player player) 
+        {
+            List<IAction> availableActions = new List<IAction>();
+            foreach(IAction action in tile.Actions)
+            {
+                if(action is IBuyable){
+                    if(((PropertyTile)tile).Owner == null && ((PropertyTile)tile).Price <= player.Money)
+                    {
+                        availableActions.Add(action);
+                    }
+                    continue;
+                }else if(action is ISellable)
+                {
+                    if(((PropertyTile)tile).Owner == player)
+                    {
+                        availableActions.Add(action);
+                    }
+                    continue;
+                }
+
+                availableActions.Add(action);
+            }
+
+            return availableActions;
         }
 
         private void LoadTiles()

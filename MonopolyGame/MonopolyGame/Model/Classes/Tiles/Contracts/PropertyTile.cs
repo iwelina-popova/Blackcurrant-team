@@ -29,5 +29,10 @@
         {
             this.Owner = newOwner;
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + string.Format(" owner: {0} base rent: {1} price: {2}",this.Owner==null?"no owner":this.Owner.Name,this.BaseRent, this.Price);
+        }
     }
 }

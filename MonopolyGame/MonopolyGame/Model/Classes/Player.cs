@@ -67,12 +67,6 @@
 
         public void WidthdrawMoney(int amount)
         {
-             if (this.IsBankrupt)
-                    throw new ArgumentException ("Player is Bankrupt!");
-                 
-             if(this.Money < amount)
-                 throw new ArgumentException("Player do not have the money!");
-
                 this.Money -= amount;
 
                 if (this.Money < 0)

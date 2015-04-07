@@ -24,5 +24,10 @@
                 this.name = value;
             }
         }
+
+        public override string ToString()
+        {
+            return string.Format("name: {0}", this.Name);
+        }
     }
 }
