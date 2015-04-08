@@ -5,7 +5,7 @@
 
     using Model.Classes.Cards.Contracts;
 
-    public class CardHelpers
+    public static class CardHelpers
     {
         private static Random r = new Random();
 
